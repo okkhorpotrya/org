@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>লেখনী সংগ্রহ — অক্ষরপত্র</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================
+   GLOBAL THEME
+=========================== */
+:root {
+  --bg:#f8f5ec; 
+  --ink:#1c1c1c;
+  --panel:rgba(255,255,255,.92);
+  --accent:#a2352a;
+  --accent2:#4e6e5d;
+  --outline:rgba(0,0,0,.08);
+  --radius:14px;
+}
+:root.dark {
+  --bg:#1f1e1c;
+  --ink:#f0eada;
+  --panel:rgba(35,34,33,.92);
+  --accent:#d6a18b;
+  --accent2:#91ad9f;
+}
+
+/* BODY */
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Hind Siliguri",sans-serif;
+  transition:.4s;
+}
+
+/* NAVBAR */
+.nav-container{
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  padding:14px 22px;
+  background:var(--panel);
+  backdrop-filter:blur(12px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--outline);
+  z-index:1000;
+}
+.logo-left{font-size:20px;font-weight:700;}
+
+/* HEADER */
+.page-header{
+  padding-top:140px;
+  text-align:center;
+  animation:fadeIn .6s;
+}
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+.page-header h1{
+  font-size:40px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.page-header p{
+  color:var(--accent2);
+  font-size:16px;
+}
+
+/* SECTION TITLES */
+.section-title{
+  max-width:1000px;
+  margin:50px auto 8px;
+  font-size:22px;
+  font-weight:700;
+  padding-left:10px;
+}
+
+/* ARTICLE CARDS */
+.card-grid{
+  max-width:1000px;
+  margin:auto;
+  padding:10px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:var(--panel);
+  border-radius:var(--radius);
+  border:1px solid var(--outline);
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+  overflow:hidden;
+  transition:.25s;
+  height:270px;
+  display:flex;
+  flex-direction:column;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 26px rgba(0,0,0,.12);
+}
+
+.card img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  flex:1;
+}
+
+.card-title{
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:4px;
+}
+.card-excerpt{
+  font-size:13px;
+  color:var(--accent2);
+  margin-bottom:8px;
+}
+
+.read-btn{
+  background:var(--accent);
+  color:white;
+  padding:6px 10px;
+  font-size:12px;
+  border-radius:var(--radius);
+  text-decoration:none;
+  font-weight:600;
+  align-self:flex-start;
+}
+
+/* ========= HOME BUTTON =========== */
+.home-btn{
+  position:fixed;
+  left:20px;
+  top:90px;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:var(--panel);
+  border:1px solid var(--outline);
+  color:var(--accent);
+  font-size:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  backdrop-filter:blur(8px);
+  z-index:2000;
+  transition:.25s;
+}
+.home-btn:hover{
+  transform:translateY(-4px);
+  background:color-mix(in srgb, var(--panel) 85%, black);
+  color:var(--ink);
+}
+
+/* 3 DOT MENU */
+.floating-menu-btn{
+  position:fixed;
+  right:20px;
+  top:90px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--panel);
+  border:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  font-size:22px;
+  cursor:pointer;
+  z-index:2000;
+}
+
+.menu-panel{
+  position:fixed;
+  right:20px;
+  top:145px;
+  background:var(--panel);
+  padding:14px;
+  border-radius:var(--radius);
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  border:1px solid var(--outline);
+  display:none;
+  flex-direction:column;
+  z-index:2001;
+}
+
+.menu-panel a{
+  text-decoration:none;
+  color:var(--ink);
+  font-weight:600;
+  margin:6px 0;
+  font-size:15px;
+}
+.menu-panel a:hover{
+  color:var(--accent);
+}
+
+/* THEME BUTTON */
+.theme-btn{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:52px;
+  height:52px;
+  border:none;
+  border-radius:50%;
+  background:var(--panel);
+  font-size:26px;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  cursor:pointer;
+  z-index:2000;
+}
+
+/* CATEGORY BAR */
+.category-bar{
+  position:sticky;
+  top:70px;
+  z-index:900;
+  background:var(--panel);
+  backdrop-filter:blur(10px);
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  padding:12px 10px;
+  border-bottom:1px solid var(--outline);
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+}
+
+.category-bar a{
+  text-decoration:none;
+  font-size:16px;
+  font-weight:600;
+  color:var(--ink);
+  padding-bottom:4px;
+  position:relative;
+  transition:.25s;
+}
+
+.category-bar a:hover{
+  color:var(--accent);
+}
+
+.category-bar a::after{
+  content:"";
+  position:absolute;
+  bottom:-3px; left:0;
+  width:0%; 
+  height:2px;
+  background:var(--accent);
+  transition:.25s;
+}
+
+.category-bar a:hover::after{
+  width:100%;
+}
+
+@media(max-width:600px){
+  .category-bar{
+    gap:14px;
+    padding:10px 6px;
+  }
+  .category-bar a{
+    font-size:14px;
+  }
+}
+
+/* SMOOTH SCROLL */
+html{
+  scroll-behavior:smooth;
+}
+
+footer{
+  margin-top:40px;
+  padding:20px;
+  text-align:center;
+  border-top:1px solid var(--outline);
+  color:var(--accent2);
+}
+</style>
+</head>
+<body>
+
+<!-- HOME BUTTON -->
+<a href="index.html" class="home-btn">🏠</a>
+
+<!-- THEME BUTTON -->
+<button id="themeBtn" class="theme-btn">🌙</button>
+
+<!-- FLOATING 3-DOT MENU -->
+<button id="menuBtn" class="floating-menu-btn">⋮</button>
+
+<div id="menuPanel" class="menu-panel">
+  <a href="#poem">কবিতা</a>
+  <a href="#probondho">প্রবন্ধ</a>
+  <a href="#golpo">গল্প</a>
+  <a href="#news">নিউজ</a>
+</div>
+
+<!-- NAV -->
+<div class="nav-container">
+  <div class="logo-left">OKKHORPOTRYA</div>
+</div>
+
+<!-- HEADER -->
+<section class="page-header">
+  <h1>লেখনী সংগ্রহ</h1>
+  <p>অক্ষরপত্রের কবিতা, প্রবন্ধ, গল্প ও নিউজ — এক পাতায়</p>
+</section>
+
+<!-- CATEGORY BAR -->
+<div class="category-bar">
+  <a href="#poem">কবিতা</a>
+  <a href="#probondho">প্রবন্ধ</a>
+  <a href="#golpo">গল্প</a>
+  <a href="#news">নিউজ</a>
+</div>
+
+<!-- ======================
+     কবিতা
+====================== -->
+<h2 id="poem" class="section-title">কবিতা</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <img src="assets/poem1.jpg">
+    <div class="card-content">
+      <div class="card-title">রাত্রির গল্প</div>
+      <div class="card-excerpt">রাতের আকাশের নরম বাতাসে...</div>
+      <a href="writings/poem01.html" class="read-btn">পড়ুন</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="assets/poem2.jpg">
+    <div class="card-content">
+      <div class="card-title">তুমি আমার শব্দ</div>
+      <div class="card-excerpt">চোখের কোণে জমা থাকে নীরবতা...</div>
+      <a href="writings/poem02.html" class="read-btn">পড়ুন</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ======================
+     প্রবন্ধ
+====================== -->
+<h2 id="probondho" class="section-title">প্রবন্ধ</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <img src="assets/probondho1.jpg">
+    <div class="card-content">
+      <div class="card-title">মানবতা কোথায়?</div>
+      <div class="card-excerpt">সমাজ বিবর্তনের মূল সুর...</div>
+      <a href="writings/probondho01.html" class="read-btn">পড়ুন</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ======================
+     গল্প
+====================== -->
+<h2 id="golpo" class="section-title">গল্প</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <img src="assets/golpo1.jpg">
+    <div class="card-content">
+      <div class="card-title">শেষ চিঠি</div>
+      <div class="card-excerpt">অনুভূতির এক নীরব গল্প...</div>
+      <a href="writings/golpo01.html" class="read-btn">পড়ুন</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ======================
+     নিউজ
+====================== -->
+<h2 id="news" class="section-title">অক্ষরপত্র নিউজ</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <img src="assets/news1.jpg">
+    <div class="card-content">
+      <div class="card-title">সাহিত্য সভা ২০২৫</div>
+      <div class="card-excerpt">বাংলা সাহিত্যকে ঘিরে বার্ষিক আয়োজন...</div>
+      <a href="writings/news01.html" class="read-btn">পড়ুন</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>© <span id="year"></span> অক্ষরপত্র | OKKHORPOTRYA</footer>
+
+
+<script>
+// Year
+document.getElementById("year").textContent=new Date().getFullYear();
+
+// THEME SWITCH
+const themeBtn=document.getElementById("themeBtn");
+if(localStorage.getItem("theme")==="dark"){
+  document.documentElement.classList.add("dark");
+  themeBtn.textContent="🌞";
+}
+themeBtn.onclick=()=>{
+  const dark=document.documentElement.classList.toggle("dark");
+  themeBtn.textContent=dark?"🌞":"🌙";
+  localStorage.setItem("theme",dark?"dark":"light");
+};
+
+// MENU DROPDOWN
+const menuBtn=document.getElementById("menuBtn");
+const menuPanel=document.getElementById("menuPanel");
+
+menuBtn.onclick=()=>{
+  menuPanel.style.display = 
+    menuPanel.style.display==="flex" ? "none" : "flex";
+};
+
+document.addEventListener("click",e=>{
+  if(!menuPanel.contains(e.target) && e.target!==menuBtn){
+    menuPanel.style.display="none";
+  }
+});
+</script>
+
+</body>
+</html>
