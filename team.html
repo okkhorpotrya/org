@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team | Okkhorpotrya</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+/* ===========================
+   GLOBAL THEME
+   =========================== */
+:root {
+  --bg: #f8f5ec;
+  --ink: #1c1c1c;
+  --accent: #a2352a;
+  --accent2: #4e6e5d;
+  --panel: rgba(255,255,255,0.88);
+  --outline: rgba(0,0,0,.08);
+  --radius: 14px;
+}
+:root.dark {
+  --bg:#1f1e1c;
+  --ink:#f0eada;
+  --panel:rgba(35,34,33,0.9);
+  --accent:#d6a18b;
+  --accent2:#91ad9f;
+  --outline:rgba(255,255,255,.1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Hind Siliguri",sans-serif;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  transition:.4s;
+  overflow-x:hidden;
+}
+
+/* ONLY BLUR MAIN CONTENT */
+#mainContent.blur {
+  filter: blur(6px);
+  pointer-events:none;
+}
+
+/* ===========================
+   NAVIGATION
+   =========================== */
+.nav-container{
+  position:fixed;top:0;left:0;width:100%;
+  padding:14px 22px;background:var(--panel);backdrop-filter:blur(12px);
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--outline);z-index:999;
+}
+.logo-left{font-weight:700;font-size:20px;}
+.hamburger{ width:32px; height:26px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; }
+.hamburger span{ height:3px; background:var(--accent2); border-radius:4px; transition:.3s; }
+
+/* FLOATING LETTERS */
+.floating-letters span{
+  position:absolute;font-size:clamp(24px,6vw,80px);
+  opacity:.05;font-weight:700;color:var(--ink);
+  animation:float 24s linear infinite;
+}
+
+/* PAGE HEADER */
+.page-header{
+  padding-top:150px;text-align:center;padding-bottom:40px;
+}
+.page-header h1{font-size:42px;font-weight:700;}
+.page-header p{color:var(--accent2);margin-top:6px;}
+
+/* TEAM GRID */
+.team-grid{
+  max-width:1000px;margin:auto;padding:20px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;
+}
+.team-card{
+  background:var(--panel);padding:22px;
+  border-radius:var(--radius);border:1px solid var(--outline);
+  text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.06);
+  cursor:pointer;transition:.3s;
+}
+.team-card:hover{ transform:translateY(-6px); }
+
+.team-photo{
+  width:120px;height:120px;border-radius:50%;background:#ddd;object-fit:cover;
+}
+.team-name{font-size:22px;font-weight:700;margin-top:10px;}
+.team-role{font-size:15px;color:var(--accent);margin-bottom:8px;font-weight:600;}
+
+/* ===========================
+   MODAL POPUP
+   =========================== */
+.modal-overlay{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(6px);
+  display:none; justify-content:center; align-items:center;
+  z-index:3000;
+}
+.modal-box{
+  background:var(--panel);
+  width:90%; max-width:420px;
+  border-radius:var(--radius);
+  padding:25px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.modal-photo{
+  width:130px;height:130px;border-radius:50%;object-fit:cover;background:#ddd;margin:auto;margin-bottom:12px;
+}
+.modal-name{font-size:26px;font-weight:700;margin-bottom:4px;}
+.modal-role{font-size:15px;color:var(--accent);font-weight:600;margin-bottom:15px;}
+.modal-bio{color:var(--accent2);line-height:1.85;font-size:16px;}
+
+.close-btn{
+  margin-top:18px;
+  background:var(--accent);
+  color:#fff;
+  padding:10px 20px;
+  font-weight:600;
+  border:none;
+  border-radius:var(--radius);
+  cursor:pointer;
+}
+
+/* THEME BUTTON */
+.emoji-theme-btn{
+  position:fixed;right:20px;bottom:20px;
+  width:52px;height:52px;border-radius:50%;
+  border:none;background:var(--panel);
+  font-size:26px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.25);
+  z-index:3500;
+}
+
+/* FOOTER */
+footer{
+  margin-top:40px;padding:20px;text-align:center;
+  font-size:14px;color:var(--accent2);
+  border-top:1px solid var(--outline);
+}
+  </style>
+</head>
+
+<body>
+
+<!-- DARK MODE BUTTON -->
+<button id="themeBtn" class="emoji-theme-btn">🌙</button>
+
+<!-- WRAP EVERYTHING FOR BLUR -->
+<div id="mainContent">
+
+<!-- Floating letters -->
+<div class="floating-letters">
+  <span>অক্ষর</span><span>পত্র</span><span>শব্দ</span><span>ক</span>
+</div>
+
+<!-- NAV -->
+<div class="nav-container">
+  <div class="logo-left">OKKHORPOTRYA</div>
+</div>
+
+<!-- HEADER -->
+<section class="page-header">
+  <h1>আমাদের টিম</h1>
+  <p>অক্ষরপত্রের সৃজনশীল শক্তিকে এগিয়ে নিয়ে যাঁরা কাজ করছেন</p>
+</section>
+
+<!-- TEAM GRID -->
+<div class="team-grid">
+
+  <div class="team-card"
+       data-name="মুবাশ্বির হাসান"
+       data-role="Founder & Chief Editor"
+       data-img="assets/team1.jpg"
+       data-bio="সাহিত্য, সংস্কৃতি ও জ্ঞানচর্চার মাধ্যমে অক্ষরপত্রকে নতুন উচ্চতায় নিয়ে যাচ্ছেন নিষ্ঠা ও নেতৃত্বের সাথে।">
+    <img src="assets/team1.jpg" class="team-photo">
+    <div class="team-name">মুবাশ্বির হাসান</div>
+    <div class="team-role">Founder & Chief Editor</div>
+  </div>
+
+</div>
+
+</div> <!-- END mainContent -->
+
+<!-- MODAL -->
+<div id="modalOverlay" class="modal-overlay">
+  <div class="modal-box">
+    <img id="modalPhoto" class="modal-photo">
+    <div id="modalName" class="modal-name"></div>
+    <div id="modalRole" class="modal-role"></div>
+    <div id="modalBio" class="modal-bio"></div>
+    <button id="closeModal" class="close-btn">বন্ধ করুন</button>
+  </div>
+</div>
+
+<footer>© <span id="year"></span> অক্ষরপত্র | OKKHORPOTRYA</footer>
+
+<script>
+// YEAR
+document.getElementById("year").textContent=new Date().getFullYear();
+
+// DARK MODE
+const themeBtn = document.getElementById("themeBtn");
+if(localStorage.getItem("theme")==="dark"){ 
+  document.documentElement.classList.add("dark"); 
+  themeBtn.textContent="🌞";
+}
+themeBtn.addEventListener("click",()=>{
+  const dark=document.documentElement.classList.toggle("dark");
+  themeBtn.textContent=dark?"🌞":"🌙";
+  localStorage.setItem("theme",dark?"dark":"light");
+});
+
+// MODAL LOGIC
+const modal=document.getElementById("modalOverlay");
+const closeModal=document.getElementById("closeModal");
+const mainContent=document.getElementById("mainContent");
+
+document.querySelectorAll(".team-card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    modal.style.display="flex";
+    mainContent.classList.add("blur");
+
+    document.getElementById("modalName").textContent = card.dataset.name;
+    document.getElementById("modalRole").textContent = card.dataset.role;
+    document.getElementById("modalBio").textContent  = card.dataset.bio;
+    document.getElementById("modalPhoto").src       = card.dataset.img;
+  });
+});
+
+// CLOSE MODAL
+closeModal.onclick=()=>{
+  modal.style.display="none";
+  mainContent.classList.remove("blur");
+};
+
+modal.onclick=(e)=>{
+  if(e.target===modal){
+    modal.style.display="none";
+    mainContent.classList.remove("blur");
+  }
+};
+</script>
+
+</body>
+</html>
