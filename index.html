@@ -1,357 +1,284 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>অক্ষরপত্র | OKKHORPOTRYA</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>অক্ষরপত্র | OKKHORPOTRYA</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 /* ===========================
    GLOBAL THEME
-   =========================== */
+=========================== */
 :root {
-  --bg: #f8f5ec;
-  --ink: #1c1c1c;
-  --accent: #a2352a;
-  --accent2: #4e6e5d;
-  --panel: rgba(255,255,255,0.88);
-  --outline: rgba(0,0,0,.08);
-  --radius: 14px;
+  --bg:#f8f5ec;
+  --ink:#1c1c1c;
+  --accent:#a2352a;
+  --accent2:#4e6e5d;
+  --panel:rgba(255,255,255,.9);
+  --outline:rgba(0,0,0,.08);
+  --radius:14px;
 }
 :root.dark {
   --bg:#1f1e1c;
   --ink:#f0eada;
-  --panel:rgba(35,34,33,0.9);
+  --panel:rgba(35,34,33,.92);
   --accent:#d6a18b;
   --accent2:#91ad9f;
   --outline:rgba(255,255,255,.1);
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Hind Siliguri",sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Hind Siliguri";}
 body{
   background:var(--bg);
   color:var(--ink);
-  transition:.4s;
+  transition:.3s;
   overflow-x:hidden;
 }
 
-/* Grain Texture */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:radial-gradient(var(--ink) 1px,transparent 1px);
-  background-size:3px 3px;
-  opacity:.05;
-  z-index:-2;
-}
-
-/* ===========================
-   NAVIGATION
-   =========================== */
-.nav-container{
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  padding:14px 22px;
-  background:var(--panel);
-  backdrop-filter:blur(12px);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--outline);
-  z-index:999;
-}
-.logo-left{
-  font-weight:700;
-  font-size:20px;
-}
-.hamburger{
-  width:32px;
-  height:26px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  cursor:pointer;
-}
-.hamburger span{
-  height:3px;
-  width:100%;
-  background:var(--accent2);
-  border-radius:4px;
-  transition:.3s;
-}
-.hamburger.active span:nth-child(1){
-  transform:translateY(10px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2){opacity:0;}
-.hamburger.active span:nth-child(3){
-  transform:translateY(-10px) rotate(-45deg);
-}
-
-.side-menu{
-  position:fixed;
-  top:0;right:0;
-  width:240px;
-  height:100vh;
-  background:var(--panel);
-  backdrop-filter:blur(12px);
-  padding:80px 22px;
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  border-left:1px solid var(--outline);
-  transform:translateX(100%);
-  transition:.35s ease;
-  z-index:1000;
-}
-.side-menu.show{
-  transform:translateX(0);
-}
-.side-menu a{
-  text-decoration:none;
-  font-weight:600;
-  color:var(--ink);
-  font-size:17px;
-}
-.menu-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.4);
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
-  z-index:900;
-}
-.menu-overlay.show{
-  opacity:1;
-  pointer-events:auto;
-}
-
-/* Submenu */
-.submenu-container{display:flex;flex-direction:column;}
-.submenu-toggle{
-  border:none;background:none;
-  font-size:17px;font-weight:600;
-  color:var(--ink);cursor:pointer;
-  text-align:left;
-}
-.submenu{
-  display:none;
-  flex-direction:column;
-  margin-left:12px;
-  padding-left:10px;
-  border-left:2px solid var(--outline);
-}
-.submenu a{
-  font-size:15px;
-  color:var(--accent2);
-}
-
-/* ===========================
-   FLOATING LETTERS
-   =========================== */
+/* FLOATING LETTERS */
 .floating-letters{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
+  position:fixed; inset:0; pointer-events:none; z-index:-1;
 }
 .floating-letters span{
   position:absolute;
-  font-size:clamp(24px,6vw,80px);
+  font-size:clamp(20px,6vw,70px);
+  opacity:.035;
   font-weight:700;
-  opacity:.05;
-  animation:float 25s linear infinite;
-  color:var(--ink);
+  animation:float 22s linear infinite;
 }
 @keyframes float{
-  0%{transform:translateY(110vh) translateX(-10vw);}
-  100%{transform:translateY(-10vh) translateX(10vw);}
+  0%{transform:translateY(100vh)}
+  100%{transform:translateY(-15vh)}
 }
 
-/* ===========================
-   HERO
-   =========================== */
+/* NAV */
+.nav-container{
+  position:fixed;top:0;left:0;width:100%;
+  padding:10px 20px;
+  background:var(--panel);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--outline);
+  display:flex;justify-content:space-between;align-items:center;
+  z-index:999;
+}
+.logo-left{font-size:22px;font-weight:700;}
+
+.hamburger{
+  width:30px;height:23px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  cursor:pointer;
+}
+.hamburger span{
+  height:3px;width:100%;background:var(--accent2);
+  border-radius:4px;transition:.3s;
+}
+.hamburger.active span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+
+.side-menu{
+  position:fixed;top:0;right:0;height:100vh;width:230px;
+  background:var(--panel);padding:60px 24px;
+  display:flex;flex-direction:column;gap:18px;
+  transform:translateX(100%);transition:.3s;
+  border-left:1px solid var(--outline);
+}
+.side-menu.show{transform:translateX(0);}
+.side-menu a{font-size:17px;color:var(--ink);text-decoration:none;font-weight:600;}
+
+.menu-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.4);
+  opacity:0;pointer-events:none;transition:.3s;z-index:900;
+}
+.menu-overlay.show{opacity:1;pointer-events:auto;}
+
+/* HERO – Compact version */
 .hero{
-  height:100vh;
-  display:flex;flex-direction:column;
+  height:58vh;              /* reduced from 75vh */
+  display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:0 6%;
-}
-.hero h1{
-  font-size:clamp(42px,7vw,110px);
-  font-weight:700;
-}
-.hero p{
-  color:var(--accent);
-  margin:10px 0 30px;
-  font-size:20px;
-}
-.btn{
-  padding:12px 22px;
-  background:var(--accent);
-  color:#fff;
-  border-radius:var(--radius);
-  text-decoration:none;
-  font-weight:600;
-  box-shadow:0 8px 16px rgba(0,0,0,.1);
+  padding:20px 6% 0;        /* adds slight top padding, removes bottom */
+  margin-top:30px;          /* pulls hero upward neatly */
 }
 
-/* ===========================
-   SECTIONS
-   =========================== */
+.hero-title .bangla{
+  font-size:clamp(44px,7vw,105px);
+  font-weight:700;
+}
+
+.hero-title .english{
+  font-size:20px;
+  letter-spacing:3px;
+  margin-top:-4px;          /* tighter spacing between BN & EN */
+}
+
+.hero p{
+  margin-top:6px;           /* smaller gap */
+  font-size:20px;
+  color:var(--accent);
+}
+
+
+/* SECTIONS */
 section{
-  padding:70px 6%;
-  max-width:1000px;
-  margin:auto;
-  text-align:center;
+  padding:40px 6%;
+  max-width:950px;margin:auto;text-align:center;
 }
 h2{
-  font-size:32px;
-  margin-bottom:15px;
-  position:relative;
-  display:inline-block;
+  font-size:30px;margin-bottom:12px;
+  position:relative;display:inline-block;
 }
 h2::after{
   content:"";
   position:absolute;
-  bottom:-6px;left:0;
-  width:50%;
+  bottom:-6px;left:50%;
+  transform:translateX(-50%);
+  width:60px;
   height:3px;
   background:var(--accent);
   border-radius:3px;
 }
-
-.section-sub{
-  color:var(--accent2);
-  margin-bottom:28px;
+.section-sub{margin-bottom:20px;font-size:15px;color:var(--accent2);}
+/* JOIN + DONATE SPACING FIX */
+#join, #donate {
+  margin-top: 40px;
 }
 
-/* ===========================
-   FEATURED WRITING (SCROLLABLE)
-   =========================== */
-.scroll-wrapper{
-  overflow-x:auto;
-  overflow-y:hidden;
-  white-space:nowrap;
-  cursor:grab;
-  scroll-behavior:smooth;
-  padding-bottom:10px;
-}
-.scroll-wrapper::-webkit-scrollbar{
-  height:8px;
-}
-.scroll-wrapper::-webkit-scrollbar-track{
-  background:transparent;
-}
-.scroll-wrapper::-webkit-scrollbar-thumb{
-  background:var(--accent2);
-  border-radius:10px;
+/* JOIN spacing */
+.join-block {
+  margin-bottom: 22px;
 }
 
-.scroll-container{
-  display:inline-flex;
+.join-btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* DONATE spacing */
+.donate-block {
+  margin-bottom: 22px;
+}
+
+.donate-btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.donate-btn {
+  padding: 12px 26px;
+  font-size: 17px;
+  border-radius: 12px;
+}
+
+/* Donate number spacing */
+.donate-number {
+  display: none;
+  margin-top: 18px;
+  background: var(--panel);
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  color: var(--accent);
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.join-btn {
+  padding: 12px 26px;
+  font-size: 17px;
+  border-radius: 12px;
+}
+
+/* CATEGORY GRID (bigger boxes) */
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:22px;
-  padding:10px;
+  margin-top:18px;
 }
-
-.writing-card{
-  flex:0 0 280px;
+.cat-box{
+  padding:28px 24px;
   background:var(--panel);
-  padding:22px;
   border-radius:var(--radius);
   border:1px solid var(--outline);
-  box-shadow:0 6px 16px rgba(0,0,0,.07);
-  text-align:left;
-  white-space:normal;
+  text-decoration:none;
+  color:var(--ink);
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+  transition:.25s;
+}
+.cat-box:hover{
+  transform:translateY(-5px);
+  border-color:var(--accent);
+  box-shadow:0 12px 26px rgba(0,0,0,.15);
+}
+.cat-box h3{
+  font-size:22px;margin-bottom:6px;color:var(--accent);
+}
+.cat-box p{
+  font-size:15px;color:var(--accent2);line-height:1.6;
 }
 
-/* ===========================
-   TEXT BLOCKS
-   =========================== */
+/* TEXT BLOCK */
 .text-block{
   background:var(--panel);
-  padding:30px 24px;
-  border-left:5px solid var(--accent);
-  border-radius:var(--radius);
+  padding:20px;border-radius:var(--radius);
   border:1px solid var(--outline);
-  color:var(--accent2);
-  font-size:18px;
-  line-height:1.85;
-  box-shadow:0 6px 16px rgba(0,0,0,.05);
-  margin-top:20px;
+  border-left:4px solid var(--accent);
+  font-size:16px;color:var(--accent2);
+  line-height:1.6;
 }
 
-/* ===========================
-   DONATE
-   =========================== */
-.donate-btn{background:var(--accent2);}
+/* JOIN + DONATE */
+#join,#donate{margin-top:35px;}
+
+.join-btn{
+  padding:10px 24px;border-radius:12px;background:var(--accent);
+  color:#fff;font-size:17px;text-decoration:none;
+}
+.donate-btn{
+  padding:10px 24px;border-radius:12px;background:var(--accent2);
+  color:#fff;font-size:17px;
+}
 .donate-number{
-  display:none;
-  margin-top:20px;
-  background:var(--panel);
-  padding:14px;
-  border-radius:var(--radius);
-  box-shadow:0 4px 12px rgba(0,0,0,.1);
-  width:fit-content;
-  margin-inline:auto;
-  font-size:18px;
-  color:var(--accent);
+  display:none;background:var(--panel);
+  padding:10px 18px;border-radius:var(--radius);
+  color:var(--accent);margin:14px auto 0;width:fit-content;
 }
 
-/* ===========================
-   THEME BUTTON
-   =========================== */
+/* THEME BUTTON */
 .emoji-theme-btn{
-  position:fixed;
-  right:20px;bottom:20px;
-  width:52px;height:52px;
-  border-radius:50%;
-  border:none;
-  background:var(--panel);
+  position:fixed;right:18px;bottom:18px;
+  width:48px;height:48px;background:var(--panel);
+  border:none;border-radius:50%;
   box-shadow:0 8px 20px rgba(0,0,0,.25);
-  font-size:26px;
-  cursor:pointer;
-  backdrop-filter:blur(6px);
-  z-index:2000;
+  font-size:22px;cursor:pointer;z-index:2000;
 }
 
 /* FOOTER */
 footer{
-  text-align:center;
-  padding:20px;
-  font-size:14px;
-  color:var(--accent2);
+  margin-top:30px;padding:20px;
+  text-align:center;color:var(--accent2);
   border-top:1px solid var(--outline);
-  margin-top:40px;
+  font-size:14px;
 }
-  </style>
+</style>
 </head>
 
 <body>
 
-<!-- Floating Letters -->
+<!-- FLOATING LETTERS -->
 <div class="floating-letters">
-  <span>অক্ষর</span><span>ক</span><span>্ষ</span><span>পত্র</span>
-  <span>আ</span><span>ত</span><span>্</span><span>র</span>
-  <span>ল</span><span>ে</span><span>খ</span><span>া</span>
-  <span>মুবাশ্বির</span><span>ব</span><span>সাদ</span><span>দ</span>
+  <span>অক্ষর</span><span>কবিতা</span><span>গল্প</span>
+  <span>প্রবন্ধ</span><span>স্বপ্ন</span><span>পত্র</span>
 </div>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <div class="nav-container">
   <div class="logo-left">OKKHORPOTRYA</div>
   <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
@@ -359,168 +286,116 @@ footer{
   <div id="sideMenu" class="side-menu">
     <a href="index.html">হোম</a>
     <a href="article.html">আর্টিকেল</a>
-    <a href="about.html">অক্ষরপত্র সম্পর্কে</a>
-    <a href="team.html">অক্ষরপত্রের স্বপ্নাদর্শী যারা</a>
-    <a href="join">যুক্ত হোন</a>
-    <a href="donate">ডোনেট</a>
+    <a href="about.html">সম্পর্কে</a>
+    <a href="team.html">টিম</a>
+    <a href="join.html">যুক্ত হোন</a>
+    <a href="donate.html">ডোনেট</a>
   </div>
 </div>
-
 <div id="menuOverlay" class="menu-overlay"></div>
 
 <button id="emojiThemeBtn" class="emoji-theme-btn">🌙</button>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>অক্ষরপত্র | OKKHORPOTRYA</h1>
+  <div class="hero-title">
+    <span class="bangla">অক্ষরপত্র | OKKHORPOTRYA </span>
+  
+  </div>
   <p>সমাজ সংস্কারে সাহিত্যের অতন্দ্র প্রহরী</p>
-  <a href="articles.html" class="btn">লেখনী পড়ুন | READ WRITINGS</a>
 </section>
 
-<!-- FEATURED -->
-<section id="featured">
-  <h2>FEATURED WRITING</h2>
-  <p class="section-sub">Shining voices of the new generation</p>
+<!-- CATEGORY -->
+<section id="categories">
+  <h2>লেখার বিভাগ</h2>
+  <p class="section-sub">যা পড়তে ভালো লাগে বেছে নিন</p>
 
-  <div class="scroll-wrapper" id="scrollWritings">
-    <div class="scroll-container">
-
-      <div class="writing-card">
-        <div class="tag">প্রবন্ধ</div>
-        <h3>নিস্তব্ধতার ভাঁজে</h3>
-        <p>শহরের শব্দ থেমে গেলে...</p>
-      </div>
-
-      <div class="writing-card">
-        <div class="tag">গদ্য</div>
-        <h3>বইয়ের গন্ধ</h3>
-        <p>ফিকে কাগজ, কালির স্মৃতি...</p>
-      </div>
-
-      <div class="writing-card">
-        <div class="tag">কবিতা</div>
-        <h3>রাত্রির গল্প</h3>
-        <p>নক্ষত্রের মতো ছড়িয়ে থাকা...</p>
-      </div>
-
-    </div>
+  <div class="category-grid">
+    <a href="poem.html" class="cat-box"><h3>কবিতা</h3><p>অনুভূতির নরম ঢেউ।</p></a>
+    <a href="probondho.html" class="cat-box"><h3>প্রবন্ধ</h3><p>চিন্তা ও বিশ্লেষণ।</p></a>
+    <a href="golpo.html" class="cat-box"><h3>গল্প</h3><p>জীবনের গল্পগুলো।</p></a>
+    <a href="uponnas.html" class="cat-box"><h3>ধারাবাহিক উপন্যাস</h3><p>অধ্যায়ে অধ্যায়ে রহস্য।</p></a>
+    <a href="okkh-news.html" class="cat-box"><h3>অক্ষরপত্র নিউজ</h3><p>সাহিত্য-সংস্কৃতির সংবাদ।</p></a>
+    <a href="book-review.html" class="cat-box"><h3>বই রিভিউ</h3><p>বইয়ের বিশ্লেষণ।</p></a>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <h2>ABOUT OKKHORPOTRYA</h2>
+  <h2>ABOUT</h2>
   <div class="text-block">
-    “শব্দেরা নিজেরাই জানে,<br>কে তাদের কারিগর!”
+    “শব্দেরা নিজেরাই জানে, কে তাদের কারিগর।”
   </div>
 </section>
 
-<!-- JOIN (Spacing Added) -->
-<section id="join" style="margin-top:70px;">
-  <h2>যুক্ত হোন | JOIN US</h2>
-  <div class="text-block">
+<!-- JOIN -->
+<section id="join">
+  <h2>যুক্ত হোন</h2>
+
+  <div class="text-block join-block">
     আপনি যদি শব্দের কারিগর হন — অক্ষরপত্র আপনাকে আহ্বান জানায়।
   </div>
-  <a href="mailto:okkhropotro@gmail.com" class="btn">JOIN NOW</a>
 
+  <div class="join-btn-wrapper">
+    <a href="mailto:okkhropotro@gmail.com" class="join-btn">JOIN NOW</a>
+  </div>
 </section>
+
 
 <!-- DONATE -->
 <section id="donate">
-  <h2>অনুদান | DONATE</h2>
-  <div class="text-block">
-    প্রতিটি সমর্থন আমাদের আলোর পথ দীপ্ত করে।
+  <h2>ডোনেট</h2>
+
+  <div class="text-block donate-block">
+    আপনার সামান্য সমর্থন অক্ষরপত্রকে আরও এগিয়ে নেয়।
   </div>
 
-  <button class="btn donate-btn" id="donateReveal">অনুদান করুন</button>
+  <div class="donate-btn-wrapper">
+    <button id="donateReveal" class="donate-btn">অনুদান করুন</button>
+  </div>
 
   <div id="donateNumber" class="donate-number">
-    📞 অনুদানের নম্বর: <strong>+880XXXXXXXXXX</strong>
+    📞 +880XXXXXXXXXX
   </div>
 </section>
+
 
 <footer>
   © <span id="year"></span> অক্ষরপত্র | OKKHORPOTRYA
 </footer>
 
-<!-- ===========================
-     JS
-     =========================== -->
 <script>
-/* Floating Letters Random */
-document.querySelectorAll('.floating-letters span').forEach(s=>{
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* Floating letters */
+document.querySelectorAll(".floating-letters span").forEach(s=>{
   s.style.left=Math.random()*100+"vw";
-  s.style.animationDelay=Math.random()*-25+"s";
+  s.style.animationDelay=Math.random()*-20+"s";
 });
 
-/* Auto Year */
-document.getElementById("year").textContent = new Date().getFullYear();
+/* Menu */
+const h=document.getElementById("hamburger");
+const sm=document.getElementById("sideMenu");
+const ov=document.getElementById("menuOverlay");
+h.onclick=()=>{h.classList.toggle("active");sm.classList.toggle("show");ov.classList.toggle("show");};
+ov.onclick=()=>{h.classList.remove("active");sm.classList.remove("show");ov.classList.remove("show");};
 
-/* Hamburger */
-const hamburger=document.getElementById("hamburger");
-const sideMenu=document.getElementById("sideMenu");
-const overlay=document.getElementById("menuOverlay");
-
-hamburger.onclick=()=>{
-  hamburger.classList.toggle("active");
-  sideMenu.classList.toggle("show");
-  overlay.classList.toggle("show");
-};
-overlay.onclick=()=>{
-  hamburger.classList.remove("active");
-  sideMenu.classList.remove("show");
-  overlay.classList.remove("show");
+/* Donate */
+document.getElementById("donateReveal").onclick=()=>{
+  document.getElementById("donateNumber").style.display="block";
 };
 
-/* Submenu Toggle */
-document.querySelectorAll(".submenu-toggle").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const menu = btn.nextElementSibling;
-    const open = menu.style.display==="flex";
-    document.querySelectorAll(".submenu").forEach(s=>s.style.display="none");
-    menu.style.display=open?"none":"flex";
-  });
-});
-
-/* Donate Reveal */
-const donateBtn=document.getElementById("donateReveal");
-const donateNumber=document.getElementById("donateNumber");
-donateBtn.addEventListener("click",()=>{
-  donateNumber.style.display="block";
-  donateBtn.textContent="ধন্যবাদ! | THANK YOU";
-});
-
-/* Theme Toggle */
-const themeBtn=document.getElementById("emojiThemeBtn");
+/* Theme */
+const t=document.getElementById("emojiThemeBtn");
 if(localStorage.getItem("theme")==="dark"){
   document.documentElement.classList.add("dark");
-  themeBtn.textContent="🌞";
+  t.textContent="🌞";
 }
-themeBtn.addEventListener("click",()=>{
+t.onclick=()=>{
   const dark=document.documentElement.classList.toggle("dark");
-  themeBtn.textContent=dark?"🌞":"🌙";
-  localStorage.setItem("theme", dark?"dark":"light");
-});
-
-/* Drag Scroll Featured */
-const scrollBox=document.getElementById("scrollWritings");
-let isDown=false;
-let startX,scrollLeft;
-
-scrollBox.addEventListener("mousedown",(e)=>{
-  isDown=true;
-  startX=e.pageX-scrollBox.offsetLeft;
-  scrollLeft=scrollBox.scrollLeft;
-});
-scrollBox.addEventListener("mouseleave",()=>isDown=false);
-scrollBox.addEventListener("mouseup",()=>isDown=false);
-scrollBox.addEventListener("mousemove",(e)=>{
-  if(!isDown)return;
-  e.preventDefault();
-  const x=e.pageX-scrollBox.offsetLeft;
-  const walk=(x-startX)*1.2;
-  scrollBox.scrollLeft=scrollLeft-walk;
-});
+  t.textContent=dark?"🌞":"🌙";
+  localStorage.setItem("theme",dark?"dark":"light");
+};
 </script>
 
 </body>
