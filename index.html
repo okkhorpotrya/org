@@ -98,30 +98,32 @@ body{
 
 /* HERO – Compact version */
 .hero{
-  height:58vh;              /* reduced from 75vh */
+  height:55vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:20px 6% 0;        /* adds slight top padding, removes bottom */
-  margin-top:30px;          /* pulls hero upward neatly */
+  padding:0 6%;
+  margin-top:20px;
 }
 
 .hero-title .bangla{
-  font-size:clamp(44px,7vw,105px);
+  font-size:clamp(36px,6vw,80px);
   font-weight:700;
+  margin-bottom:2px;
 }
 
 .hero-title .english{
-  font-size:20px;
+  font-size:clamp(16px,2vw,20px);
   letter-spacing:3px;
-  margin-top:-4px;          /* tighter spacing between BN & EN */
+  font-weight:600;
+  color:var(--accent2);
 }
 
 .hero p{
-  margin-top:6px;           /* smaller gap */
-  font-size:20px;
+  margin-top:6px;
+  font-size:18px;
   color:var(--accent);
 }
 
