@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>লেখার শিরোনাম — অক্ষরপত্র</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ==================================
+   GLOBAL THEME
+================================== */
+:root {
+  --bg:#f8f5ec;
+  --ink:#1c1c1c;
+  --panel:#ffffffd9;
+  --accent:#a2352a;
+  --accent2:#4e6e5d;
+  --outline:rgba(0,0,0,.1);
+  --radius:14px;
+}
+:root.dark {
+  --bg:#1f1e1c;
+  --ink:#f0eada;
+  --panel:#232221e8;
+  --accent:#d6a18b;
+  --accent2:#91ad9f;
+  --outline:rgba(255,255,255,.15);
+}
+
+/* RESET */
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Hind Siliguri", sans-serif;
+  transition:.25s;
+  line-height:1.8;
+}
+
+/* Floating Letters */
+.floating-letters{
+  position:fixed; inset:0; z-index:-1;
+  pointer-events:none;
+}
+.floating-letters span{
+  position:absolute;
+  opacity:.03;
+  font-size:clamp(22px,6vw,80px);
+  font-weight:700;
+  animation:float 25s linear infinite;
+}
+@keyframes float {
+  0%{ transform:translateY(100vh); }
+  100%{ transform:translateY(-20vh); }
+}
+
+/* NAV BUTTONS */
+.back-btn{
+  position:fixed;left:20px;top:20px;
+  background:var(--panel);
+  padding:10px 18px;
+  border-radius:var(--radius);
+  border:1px solid var(--outline);
+  text-decoration:none;
+  color:var(--ink);
+  font-weight:600;
+  font-size:14px;
+  backdrop-filter:blur(6px);
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+  transition:.25s;
+}
+.back-btn:hover{ transform:translateY(-3px); }
+
+/* THEME BUTTON */
+.theme-btn{
+  position:fixed;right:20px;top:20px;
+  width:46px;height:46px;
+  border:none;border-radius:50%;
+  background:var(--panel);
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  font-size:22px;cursor:pointer;
+  backdrop-filter:blur(6px);
+}
+
+/* HEADER / TITLE */
+.article-header{
+  max-width:900px;
+  margin:120px auto 40px;
+  text-align:center;
+  padding:0 5%;
+}
+.article-title{
+  font-size:clamp(28px,5vw,52px);
+  font-weight:700;
+  margin-bottom:8px;
+}
+.article-meta{
+  font-size:15px;
+  color:var(--accent2);
+}
+
+/* CONTENT */
+.article-content{
+  max-width:900px;
+  margin:auto;
+  padding:5%;
+  background:var(--panel);
+  border-radius:var(--radius);
+  border:1px solid var(--outline);
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
+  font-size:18px;
+  line-height:1.9;
+}
+
+.article-content p{
+  margin-bottom:18px;
+}
+
+.article-content .poem-line{
+  text-align:center;
+  font-size:20px;
+  line-height:2;
+  margin-bottom:10px;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  font-size:14px;
+  color:var(--accent2);
+  margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- NAV -->
+<a href="index.html" class="back-btn">← হোমে ফিরুন</a>
+<button id="themeBtn" class="theme-btn">🌙</button>
+
+<!-- HEADER -->
+<section class="article-header">
+  <h1 class="article-title"> সিজদা শিরোনাম</h1>
+
+  <div class="article-meta">
+    ✒ লেখক: <strong>মামুন নাম</strong> • 📅 তারিখ: ২০২৫
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="article-content">
+  <p>
+
+সিজদা একা বসে ভাবছি জীবনের মানে শতজনে শত বলে, সঠিক কে জানে? মৃত্যুই হয় যদি সবশেষ আম
+র পৃথ্বীতে মোর তবে কী ছিল দরকার? ভোর থেকে রাত্রির সবকিছু দর্শনে মানুষ ব্যস্ত চাকুরীতে কিবা কর্ষণে সবকিছু যদি শেষ হয় ম
+ওতের তবে কি প্রয়োজন ছিল এত ধর্মের? যন্ত্রের কারিগর আছে আছে কাজও তোমার কর্তব্য কি ভেবেছ আজও? ভাবো—এখনো তো হয়নি সময় শেষ সিজদায় লুটে খুঁজো জীবনে
+bbxnর উদ্দেশ। যেজন প্রভুরে খুঁজে সিজদায় পড়ে আলো হয়ে পূণ্যেরা জ্বলে তার অন্তরে।
+  
+  </p>
+
+ 
+
+</section>
+
+<footer>© <span id="year"></span> অক্ষরপত্র | OKKHORPOTRYA</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* floating letters random positions */
+document.querySelectorAll(".floating-letters span").forEach(s=>{
+  s.style.left = Math.random()*100 + "vw";
+  s.style.animationDelay = Math.random()*-20 + "s";
+});
+
+/* Theme switch */
+const t=document.getElementById("themeBtn");
+if(localStorage.getItem("theme")==="dark"){
+  document.documentElement.classList.add("dark");
+  t.textContent="🌞";
+}
+t.onclick=()=>{
+  const dark=document.documentElement.classList.toggle("dark");
+  t.textContent=dark?"🌞":"🌙";
+  localStorage.setItem("theme",dark?"dark":"light");
+};
+</script>
+
+</body>
+</html>
