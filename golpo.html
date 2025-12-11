@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>কবিতা — অক্ষরপত্র</title>
+<title>গল্প — অক্ষরপত্র</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -20,7 +20,6 @@
   --outline:rgba(0,0,0,.08);
   --radius:14px;
 }
-
 :root.dark {
   --bg:#1f1e1c; 
   --ink:#f0eada;
@@ -36,7 +35,7 @@ body {
   background:var(--bg);
   color:var(--ink);
   font-family:"Hind Siliguri",sans-serif;
-  transition:.4s;
+  transition:.3s;
 }
 
 /* NAVBAR */
@@ -49,35 +48,63 @@ body {
   border-bottom:1px solid var(--outline);
   z-index:1000;
 }
-.logo-left{font-size:20px;font-weight:700;}
+.logo-left{
+  font-size:20px;
+  font-weight:700;
+}
 
-/* HOME BUTTON */
+/* TOP CATEGORY NAV */
+.category-nav{
+  margin-top:80px;
+  position:sticky;
+  top:60px;
+  z-index:900;
+  background:var(--panel);
+  padding:12px 5%;
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  border-bottom:1px solid var(--outline);
+  backdrop-filter:blur(10px);
+}
+.category-nav a{
+  text-decoration:none;
+  font-weight:600;
+  color:var(--ink);
+  font-size:15px;
+  padding-bottom:4px;
+  position:relative;
+}
+.category-nav a:hover{
+  color:var(--accent);
+}
+.category-nav a::after{
+  content:"";
+  position:absolute;
+  bottom:-4px; left:0;
+  width:0%; height:2px;
+  background:var(--accent);
+  transition:.25s;
+}
+.category-nav a:hover::after{
+  width:100%;
+}
+
+/* HOME BUTTON (TEXT ONLY) */
 .home-btn{
-  position:fixed; left:20px; top:90px;
-  width:46px; height:46px; border-radius:50%;
+  position:fixed; left:20px; top:85px;
   background:var(--panel);
   border:1px solid var(--outline);
-  color:var(--accent); font-size:22px;
-  display:flex; align-items:center; justify-content:center;
-  text-decoration:none; font-weight:700;
+  padding:8px 16px;
+  border-radius:var(--radius);
+  text-decoration:none;
+  color:var(--ink);
+  font-weight:600;
   box-shadow:0 6px 18px rgba(0,0,0,.25);
   z-index:2000;
 }
 
-/* THEME BUTTON */
-.theme-btn{
-  position:fixed; right:20px; bottom:20px;
-  width:52px; height:52px; border:none;
-  border-radius:50%;
-  background:var(--panel);
-  color:var(--ink);
-  font-size:26px;
-  cursor:pointer;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
-  z-index:2000;
-}
-
-/* HEADER */
+/* PAGE HEADER */
 .page-header{
   padding-top:140px;
   text-align:center;
@@ -89,7 +116,15 @@ body {
 }
 .page-header p{
   color:var(--accent2);
-  font-size:16px;
+}
+
+/* SECTION TITLE */
+.section-title{
+  max-width:1000px;
+  margin:40px auto 15px;
+  padding-left:10px;
+  font-size:22px;
+  font-weight:700;
 }
 
 /* GRID */
@@ -115,21 +150,18 @@ body {
 }
 .card:hover{
   transform:translateY(-4px);
-  box-shadow:0 12px 26px rgba(0,0,0,.12);
+  box-shadow:0 10px 22px rgba(0,0,0,.15);
 }
 
-/* FIXED THUMB (16:9) */
+/* THUMBNAIL */
 .card-thumb{
   width:100%;
   height:150px;
-  background:#ddd;
   overflow:hidden;
 }
 .card-thumb img{
-  width:100%;
-  height:100%;
+  width:100%; height:100%;
   object-fit:cover;
-  object-position:center;
 }
 
 .card-content{
@@ -151,9 +183,10 @@ body {
   margin-bottom:10px;
 }
 
+/* READ BTN */
 .read-btn{
   background:var(--accent);
-  color:white;
+  color:#fff;
   padding:8px 12px;
   font-size:13px;
   border-radius:var(--radius);
@@ -175,49 +208,110 @@ footer{
 
 <body>
 
-<!-- HOME BUTTON -->
-<a href="index.html" class="home-btn">🏠</a>
+<!-- HOME BUTTON (TEXT) -->
+<a href="index.html" class="home-btn">← হোম</a>
 
-<!-- NAV -->
+<!-- NAVBAR -->
 <div class="nav-container">
   <div class="logo-left">OKKHORPOTRYA</div>
 </div>
 
-<!-- THEME BUTTON -->
-<button id="themeBtn" class="theme-btn">🌙</button>
+<!-- CATEGORY NAVIGATION BAR -->
+<div class="category-nav">
+  <a href="#serial">ধারাবাহিক গল্প</a>
+  <a href="#short">ছোটগল্প</a>
+  <a href="#mystery">রহস্য গল্প</a>
+
+  <a href="#kids">শিশুতোষ গল্প</a>
+</div>
 
 <!-- HEADER -->
 <section class="page-header">
-  <h1>কবিতা</h1>
-  <p>অক্ষরপত্রের নির্বাচিত কবিতাসমূহ</p>
+  <h1>গল্প</h1>
+  <p>জীবনের গল্প, অনুভূতি ও কল্পনার রূপ</p>
 </section>
 
-<!-- GRID -->
+<!-- ===========================
+     ধারাবাহিক গল্প
+=========================== -->
+<h2 id="serial" class="section-title">ধারাবাহিক গল্প</h2>
 <div class="card-grid">
 
   <div class="card">
     <div class="card-thumb">
-      <img src="assets/poem1.jpg">
+      <img src="assets/serial1.jpg">
     </div>
     <div class="card-content">
       <div>
-        <div class="card-title">রাত্রির গল্প</div>
-        <div class="card-excerpt">রাতের আকাশের নরম বাতাসে...</div>
+        <div class="card-title">অপূর্ণ অধ্যায় — পর্ব ১</div>
+        <div class="card-excerpt">রহস্যে ভরা এক গল্পের শুরু…</div>
       </div>
-      <a href="writings/poem01.html" class="read-btn">পড়ুন</a>
+      <a href="writings/serial01.html" class="read-btn">পড়ুন</a>
     </div>
   </div>
 
+</div>
+
+<!-- ===========================
+     ছোটগল্প
+=========================== -->
+<h2 id="short" class="section-title">ছোটগল্প</h2>
+<div class="card-grid">
+
   <div class="card">
     <div class="card-thumb">
-      <img src="assets/poem2.jpg">
+      <img src="assets/golpo1.jpg">
     </div>
     <div class="card-content">
       <div>
-        <div class="card-title">তুমি আমার শব্দ</div>
-        <div class="card-excerpt">চোখের কোণে জমা থাকে নীরবতা...</div>
+        <div class="card-title">শেষ চিঠি</div>
+        <div class="card-excerpt">অনুভূতির এক নীরব গল্প…</div>
       </div>
-      <a href="writings/poem02.html" class="read-btn">পড়ুন</a>
+      <a href="writings/golpo01.html" class="read-btn">পড়ুন</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===========================
+     রহস্য গল্প
+=========================== -->
+<h2 id="mystery" class="section-title">রহস্য গল্প</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-thumb">
+      <img src="assets/mystery1.jpg">
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="card-title">ছায়ার মানুষ</div>
+        <div class="card-excerpt">অদেখা এক উপস্থিতির গল্প…</div>
+      </div>
+      <a href="#" class="read-btn">পড়ুন</a>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- ===========================
+     শিশুতোষ গল্প
+=========================== -->
+<h2 id="kids" class="section-title">শিশুতোষ গল্প</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-thumb">
+      <img src="assets/kids1.jpg">
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="card-title">টুনটুনির অভিযান</div>
+        <div class="card-excerpt">এক ছোট্ট পাখির দুঃসাহসিক যাত্রা…</div>
+      </div>
+      <a href="#" class="read-btn">পড়ুন</a>
     </div>
   </div>
 
@@ -228,17 +322,14 @@ footer{
 </footer>
 
 <script>
-/* YEAR */
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* THEME TOGGLE */
+/* Dark Mode */
 const themeBtn=document.getElementById("themeBtn");
-
 if(localStorage.getItem("theme")==="dark"){
   document.documentElement.classList.add("dark");
   themeBtn.textContent="🌞";
 }
-
 themeBtn.onclick=()=>{
   const dark=document.documentElement.classList.toggle("dark");
   themeBtn.textContent = dark ? "🌞" : "🌙";
