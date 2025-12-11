@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>কবিতা — অক্ষরপত্র</title>
+<title>অক্ষরপত্র নিউজ — OKKHORPOTRYA</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -20,7 +20,6 @@
   --outline:rgba(0,0,0,.08);
   --radius:14px;
 }
-
 :root.dark {
   --bg:#1f1e1c; 
   --ink:#f0eada;
@@ -54,12 +53,13 @@ body {
 /* HOME BUTTON */
 .home-btn{
   position:fixed; left:20px; top:90px;
-  width:46px; height:46px; border-radius:50%;
+  padding:8px 16px;
   background:var(--panel);
   border:1px solid var(--outline);
-  color:var(--accent); font-size:22px;
-  display:flex; align-items:center; justify-content:center;
-  text-decoration:none; font-weight:700;
+  border-radius:var(--radius);
+  text-decoration:none;
+  color:var(--ink);
+  font-weight:600;
   box-shadow:0 6px 18px rgba(0,0,0,.25);
   z-index:2000;
 }
@@ -70,11 +70,46 @@ body {
   width:52px; height:52px; border:none;
   border-radius:50%;
   background:var(--panel);
-  color:var(--ink);
-  font-size:26px;
-  cursor:pointer;
   box-shadow:0 8px 20px rgba(0,0,0,.25);
+  color:var(--ink); font-size:26px;
+  cursor:pointer;
   z-index:2000;
+}
+
+/* TOP CATEGORY NAV */
+.category-nav{
+  margin-top:80px;
+  position:sticky;
+  top:60px;
+  z-index:900;
+  background:var(--panel);
+  padding:12px 5%;
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  border-bottom:1px solid var(--outline);
+  backdrop-filter:blur(10px);
+}
+.category-nav a{
+  text-decoration:none;
+  font-weight:600;
+  color:var(--ink);
+  padding-bottom:4px;
+  position:relative;
+}
+.category-nav a:hover{
+  color:var(--accent);
+}
+.category-nav a::after{
+  content:"";
+  position:absolute;
+  bottom:-4px; left:0;
+  width:0%; height:2px;
+  background:var(--accent);
+  transition:.25s;
+}
+.category-nav a:hover::after{
+  width:100%;
 }
 
 /* HEADER */
@@ -92,6 +127,15 @@ body {
   font-size:16px;
 }
 
+/* SECTION TITLE */
+.section-title{
+  max-width:1000px;
+  margin:40px auto 12px;
+  padding-left:10px;
+  font-size:22px;
+  font-weight:700;
+}
+
 /* GRID */
 .card-grid{
   max-width:1000px;
@@ -107,37 +151,35 @@ body {
   background:var(--panel);
   border-radius:var(--radius);
   border:1px solid var(--outline);
-  box-shadow:0 6px 16px rgba(0,0,0,.06);
   overflow:hidden;
-  transition:.25s;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
   display:flex;
   flex-direction:column;
+  transition:.25s;
 }
 .card:hover{
   transform:translateY(-4px);
   box-shadow:0 12px 26px rgba(0,0,0,.12);
 }
 
-/* FIXED THUMB (16:9) */
+/* THUMBNAIL */
 .card-thumb{
   width:100%;
   height:150px;
-  background:#ddd;
   overflow:hidden;
 }
 .card-thumb img{
-  width:100%;
-  height:100%;
+  width:100%; height:100%;
   object-fit:cover;
-  object-position:center;
 }
 
+/* CONTENT */
 .card-content{
   padding:14px;
-  flex-grow:1;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
+  flex-grow:1;
 }
 
 .card-title{
@@ -176,48 +218,118 @@ footer{
 <body>
 
 <!-- HOME BUTTON -->
-<a href="index.html" class="home-btn">🏠</a>
+<a href="index.html" class="home-btn">← হোম</a>
 
 <!-- NAV -->
 <div class="nav-container">
   <div class="logo-left">OKKHORPOTRYA</div>
 </div>
 
-<!-- THEME BUTTON -->
-<button id="themeBtn" class="theme-btn">🌙</button>
+<!-- CATEGORY NAV -->
+<div class="category-nav">
+  <a href="#national">জাতীয় সংবাদ</a>
+  <a href="#literature">সাহিত্য সংবাদ</a>
+  <a href="#events">ইভেন্ট ও অনুষ্ঠান</a>
+  <a href="#review">রিভিউ নিউজ</a>
+  <a href="#editorial">সম্পাদকীয়</a>
+</div>
 
 <!-- HEADER -->
 <section class="page-header">
-  <h1>কবিতা</h1>
-  <p>অক্ষরপত্রের নির্বাচিত কবিতাসমূহ</p>
+  <h1>অক্ষরপত্র নিউজ</h1>
+  <p>সাহিত্য, সমাজ, সংস্কৃতি—সব খবর এক জায়গায়</p>
 </section>
 
-<!-- GRID -->
+<!-- ===========================
+     NATIONAL NEWS
+=========================== -->
+<h2 id="national" class="section-title">জাতীয় সংবাদ</h2>
 <div class="card-grid">
 
   <div class="card">
-    <div class="card-thumb">
-      <img src="assets/poem1.jpg">
-    </div>
+    <div class="card-thumb"><img src="assets/news1.jpg"></div>
     <div class="card-content">
       <div>
-        <div class="card-title">রাত্রির গল্প</div>
-        <div class="card-excerpt">রাতের আকাশের নরম বাতাসে...</div>
+        <div class="card-title">বাংলা সাহিত্য সম্মেলন ২০২৫</div>
+        <div class="card-excerpt">ঢাকায় অনুষ্ঠিত বার্ষিক সাহিত্য উৎসব…</div>
       </div>
-      <a href="writings/poem01.html" class="read-btn">পড়ুন</a>
+      <a href="writings/news01.html" class="read-btn">পড়ুন</a>
     </div>
   </div>
 
+</div>
+
+<!-- ===========================
+     LITERATURE NEWS
+=========================== -->
+<h2 id="literature" class="section-title">সাহিত্য সংবাদ</h2>
+<div class="card-grid">
+
   <div class="card">
-    <div class="card-thumb">
-      <img src="assets/poem2.jpg">
-    </div>
+    <div class="card-thumb"><img src="assets/news2.jpg"></div>
     <div class="card-content">
       <div>
-        <div class="card-title">তুমি আমার শব্দ</div>
-        <div class="card-excerpt">চোখের কোণে জমা থাকে নীরবতা...</div>
+        <div class="card-title">নতুন কবিতা সংকলন প্রকাশ</div>
+        <div class="card-excerpt">প্রতিশ্রুতিশীল ১২ তরুণ কবির কবিতা…</div>
       </div>
-      <a href="writings/poem02.html" class="read-btn">পড়ুন</a>
+      <a href="#" class="read-btn">পড়ুন</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===========================
+     EVENTS & PROGRAMS
+=========================== -->
+<h2 id="events" class="section-title">ইভেন্ট ও অনুষ্ঠান</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-thumb"><img src="assets/news3.jpg"></div>
+    <div class="card-content">
+      <div>
+        <div class="card-title">বইমেলা বিশেষ আয়োজন</div>
+        <div class="card-excerpt">লেখক-পাঠক মুখোমুখি আড্ডা…</div>
+      </div>
+      <a href="#" class="read-btn">পড়ুন</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===========================
+     REVIEW NEWS
+=========================== -->
+<h2 id="review" class="section-title">রিভিউ নিউজ</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-thumb"><img src="assets/news4.jpg"></div>
+    <div class="card-content">
+      <div>
+        <div class="card-title">‘নীরবতার ঘূর্ণি’ বই রিভিউ</div>
+        <div class="card-excerpt">নতুন উপন্যাসের সমালোচনামূলক বিশ্লেষণ…</div>
+      </div>
+      <a href="#" class="read-btn">পড়ুন</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===========================
+     EDITORIAL
+=========================== -->
+<h2 id="editorial" class="section-title">সম্পাদকীয়</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <div class="card-thumb"><img src="assets/news5.jpg"></div>
+    <div class="card-content">
+      <div>
+        <div class="card-title">মানুষকে মানুষ বলা হয় কেন?</div>
+        <div class="card-excerpt">মূল্যবোধ, সমাজ ও দায়িত্বশীলতার আলোচনা…</div>
+      </div>
+      <a href="#" class="read-btn">পড়ুন</a>
     </div>
   </div>
 
@@ -231,7 +343,7 @@ footer{
 /* YEAR */
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* THEME TOGGLE */
+/* DARK MODE */
 const themeBtn=document.getElementById("themeBtn");
 
 if(localStorage.getItem("theme")==="dark"){
