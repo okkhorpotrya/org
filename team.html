@@ -8,30 +8,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-/* ===========================
+<style>
+  /* ===========================
    GLOBAL THEME
-   =========================== */
+=========================== */
 :root {
-  --bg: #f8f5ec;
-  --ink: #1c1c1c;
-  --accent: #a2352a;
-  --accent2: #4e6e5d;
-  --panel: rgba(255,255,255,0.88);
-  --outline: rgba(0,0,0,.08);
-  --radius: 14px;
+  --bg:#f8f5ec;
+  --ink:#1c1c1c;
+  --accent:#a2352a;
+  --accent2:#4e6e5d;
+  --panel:rgba(255,255,255,.88);
+  --outline:rgba(0,0,0,.08);
+  --radius:14px;
 }
-:root.dark {
+
+:root.dark{
   --bg:#1f1e1c;
   --ink:#f0eada;
-  --panel:rgba(35,34,33,0.9);
+  --panel:rgba(35,34,33,.9);
   --accent:#d6a18b;
   --accent2:#91ad9f;
   --outline:rgba(255,255,255,.1);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Hind Siliguri",sans-serif;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Hind Siliguri",sans-serif;
+}
+
 body{
   background:var(--bg);
   color:var(--ink);
@@ -39,174 +45,234 @@ body{
   overflow-x:hidden;
 }
 
-/* ONLY BLUR MAIN CONTENT */
-#mainContent.blur {
-  filter: blur(6px);
-  pointer-events:none;
-}
-
 /* ===========================
-   NAVIGATION
-   =========================== */
+   NAVBAR
+=========================== */
 .nav-container{
-  position:fixed;top:0;left:0;width:100%;
-  padding:14px 22px;background:var(--panel);backdrop-filter:blur(12px);
-  display:flex;justify-content:space-between;align-items:center;
-  border-bottom:1px solid var(--outline);z-index:999;
-}
-.logo-left{font-weight:700;font-size:20px;}
-.hamburger{ width:32px; height:26px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; }
-.hamburger span{ height:3px; background:var(--accent2); border-radius:4px; transition:.3s; }
-
-/* FLOATING LETTERS */
-.floating-letters span{
-  position:absolute;font-size:clamp(24px,6vw,80px);
-  opacity:.05;font-weight:700;color:var(--ink);
-  animation:float 24s linear infinite;
-}
-
-/* PAGE HEADER */
-.page-header{
-  padding-top:150px;text-align:center;padding-bottom:40px;
-}
-.page-header h1{font-size:42px;font-weight:700;}
-.page-header p{color:var(--accent2);margin-top:6px;}
-
-/* TEAM GRID */
-.team-grid{
-  max-width:1000px;margin:auto;padding:20px;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;
-}
-.team-card{
-  background:var(--panel);padding:22px;
-  border-radius:var(--radius);border:1px solid var(--outline);
-  text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.06);
-  cursor:pointer;transition:.3s;
-}
-.team-card:hover{ transform:translateY(-6px); }
-
-.team-photo{
-  width:120px;height:120px;border-radius:50%;background:#ddd;object-fit:cover;
-}
-.team-name{font-size:22px;font-weight:700;margin-top:10px;}
-.team-role{font-size:15px;color:var(--accent);margin-bottom:8px;font-weight:600;}
-
-/* ===========================
-   MODAL POPUP
-   =========================== */
-.modal-overlay{
-  position:fixed; inset:0;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(6px);
-  display:none; justify-content:center; align-items:center;
-  z-index:3000;
-}
-
-.modal-box{
+  position:fixed;
+  top:0;left:0;width:100%;
+  padding:12px 20px;
   background:var(--panel);
-  width:90%; 
-  max-width:420px;
-  max-height:80vh;        /* 🔥 Limit modal height */
-  border-radius:var(--radius);
-  padding:25px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
-  overflow:hidden;         /* Contain scroll area */
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--outline);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:999;
+}
+
+.logo-left{
+  font-weight:700;
+  font-size:clamp(14px,4vw,18px);
+}
+
+.hamburger{
+  width:28px;
+  height:22px;
   display:flex;
   flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
 }
-
-.modal-photo{
-  width:130px;height:130px;border-radius:50%;
-  object-fit:cover;background:#ddd;margin:auto;margin-bottom:12px;
-}
-
-.modal-name{font-size:26px;font-weight:700;margin-bottom:4px;}
-.modal-role{font-size:15px;color:var(--accent);font-weight:600;margin-bottom:12px;}
-
-/* 🔥 Scrollable bio box */
-.modal-bio{
-  color:var(--accent2);
-  line-height:1.7;
-  font-size:16px;
-  overflow-y:auto;
-  padding-right:6px;
-  max-height:250px;       /* 🔥 Scroll limit */
-}
-
-/* Style the scrollbar (optional but premium) */
-.modal-bio::-webkit-scrollbar{
-  width:6px;
-}
-.modal-bio::-webkit-scrollbar-thumb{
+.hamburger span{
+  height:3px;
   background:var(--accent2);
   border-radius:4px;
 }
 
+/* ===========================
+   PAGE HEADER
+=========================== */
+.page-header{
+  padding-top:130px;
+  padding-bottom:36px;
+  text-align:center;
+}
+
+.page-header h1{
+  font-size:clamp(20px,5vw,32px);
+  font-weight:700;
+}
+
+.page-header p{
+  margin-top:6px;
+  font-size:clamp(13px,3vw,15px);
+  color:var(--accent2);
+}
+
+/* ===========================
+   TEAM GRID
+=========================== */
+.team-grid{
+  max-width:1000px;
+  margin:auto;
+  padding:24px 16px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+}
+
+.team-card{
+  background:var(--panel);
+  padding:20px;
+  border-radius:var(--radius);
+  border:1px solid var(--outline);
+  text-align:center;
+  transition:.25s;
+}
+
+.team-card:hover{
+  transform:translateY(-4px);
+}
+
+.team-photo{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:#ddd;
+  object-fit:cover;
+}
+
+.team-name{
+  margin-top:10px;
+  font-size:clamp(16px,4vw,20px);
+  font-weight:700;
+}
+
+.team-role{
+  font-size:clamp(12px,3vw,14px);
+  color:var(--accent);
+  font-weight:600;
+  margin-top:4px;
+}
+
+/* ===========================
+   MODAL
+=========================== */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:3000;
+}
+
+.modal-box{
+  width:90%;
+  max-width:400px;
+  max-height:80vh;
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  text-align:center;
+  overflow:hidden;
+}
+
+.modal-photo{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:#ddd;
+  margin:0 auto 10px;
+}
+
+.modal-name{
+  font-size:clamp(18px,4vw,22px);
+  font-weight:700;
+}
+
+.modal-role{
+  font-size:clamp(12px,3vw,14px);
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.modal-bio{
+  font-size:clamp(13px,3vw,15px);
+  line-height:1.6;
+  color:var(--accent2);
+  overflow-y:auto;
+  max-height:220px;
+  padding-right:6px;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
 .close-btn{
   margin-top:14px;
+  padding:9px 18px;
+  font-size:clamp(13px,3vw,15px);
   background:var(--accent);
   color:#fff;
-  padding:10px 20px;
-  font-weight:600;
   border:none;
   border-radius:var(--radius);
   cursor:pointer;
 }
 
-
-/* THEME BUTTON */
 .emoji-theme-btn{
-  position:fixed;right:20px;bottom:20px;
-  width:52px;height:52px;border-radius:50%;
-  border:none;background:var(--panel);
-  font-size:26px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.25);
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:var(--panel);
+  font-size:22px;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
   z-index:3500;
 }
 
-/* FOOTER */
-footer{
-  margin-top:40px;padding:20px;text-align:center;
-  font-size:14px;color:var(--accent2);
-  border-top:1px solid var(--outline);
-}
 .home-btn{
   position:fixed;
-  left:20px;
+  left:18px;
   top:90px;
-  width:46px;
-  height:46px;
-  border-radius:50%;
+  padding:8px 14px;
   background:var(--panel);
   border:1px solid var(--outline);
-  color:var(--accent);
-  font-size:22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  border-radius:10px;
   text-decoration:none;
-  font-weight:700;
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
-  cursor:pointer;
+  font-size:clamp(12px,3vw,14px);
+  font-weight:600;
+  color:var(--ink);
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
   transition:.25s;
   z-index:2000;
 }
 
 .home-btn:hover{
-  transform:translateY(-4px);
-  background:color-mix(in srgb, var(--panel) 88%, black);
-  color:var(--ink);
+  transform:translateY(-3px);
+  color:var(--accent);
+  border-color:var(--accent);
 }
 
-  </style>
+
+/* ===========================
+   FOOTER
+=========================== */
+footer{
+  margin-top:36px;
+  padding:18px;
+  text-align:center;
+  font-size:clamp(12px,3vw,14px);
+  color:var(--accent2);
+  border-top:1px solid var(--outline);
+}
+</style>
 </head>
 
 <body>
-  <a href="index.html" class="home-btn">🏠</a>
+  <a href="index.html" class="home-btn">Home</a>
 
 
-<!-- DARK MODE BUTTON -->
-<button id="themeBtn" class="emoji-theme-btn">🌙</button>
+
 
 <!-- WRAP EVERYTHING FOR BLUR -->
 <div id="mainContent">
@@ -326,16 +392,7 @@ footer{
 document.getElementById("year").textContent=new Date().getFullYear();
 
 // DARK MODE
-const themeBtn = document.getElementById("themeBtn");
-if(localStorage.getItem("theme")==="dark"){ 
-  document.documentElement.classList.add("dark"); 
-  themeBtn.textContent="🌞";
-}
-themeBtn.addEventListener("click",()=>{
-  const dark=document.documentElement.classList.toggle("dark");
-  themeBtn.textContent=dark?"🌞":"🌙";
-  localStorage.setItem("theme",dark?"dark":"light");
-});
+
 
 // MODAL LOGIC
 const modal=document.getElementById("modalOverlay");
