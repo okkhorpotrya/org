@@ -424,6 +424,13 @@ modal.onclick=(e)=>{
   }
 };
 </script>
+<script>
+/* 🔥 GLOBAL THEME SYNC — MUST BE IN EVERY PAGE */
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  document.documentElement.classList.add("dark");
+}
+</script>
 
 </body>
 </html>
