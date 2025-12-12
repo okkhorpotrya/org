@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>লক্ষ্য · উদ্দেশ্য · সংকল্প — অক্ষরপত্র | OKKHORPOTRYA</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>লক্ষ্য · উদ্দেশ্য · সংকল্প — অক্ষরপত্র | OKKHORPOTRYA</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 /* ===========================
    GLOBAL THEME
 =========================== */
@@ -20,16 +20,23 @@
   --outline:rgba(0,0,0,.08);
   --radius:14px;
 }
+
 :root.dark {
   --bg:#1f1e1c;
   --ink:#f0eada;
   --panel:rgba(35,34,33,.9);
   --accent:#d6a18b;
   --accent2:#91ad9f;
-  --outline:rgba(255,255,255,.1);
+  --outline:rgba(255,255,255,.15);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Hind Siliguri";}
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Hind Siliguri",sans-serif;
+}
+
 body{
   background:var(--bg);
   color:var(--ink);
@@ -68,46 +75,74 @@ body{
   display:flex; justify-content:space-between; align-items:center;
   z-index:999;
 }
-.logo-left{font-size:20px;font-weight:700;}
 
-.hamburger{
-  width:32px;
-  height:26px;
-  cursor:pointer;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+.logo-left{
+  font-size:20px;
+  font-weight:700;
 }
-.hamburger span{
-  height:3px;
+
+/* THREE DOT MENU */
+.three-dot{
+  width:5px;
+  height:5px;
+  border-radius:50%;
   background:var(--accent2);
-  border-radius:4px;
-  transition:.3s;
+  position:relative;
+  cursor:pointer;
+  transition:.2s;
 }
-.hamburger.active span:nth-child(1){ transform:translateY(9px) rotate(45deg); }
-.hamburger.active span:nth-child(2){ opacity:0; }
-.hamburger.active span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
+.three-dot::before,
+.three-dot::after{
+  content:"";
+  width:5px; height:5px;
+  border-radius:50%;
+  background:var(--accent2);
+  position:absolute; left:0;
+}
+.three-dot::before{ top:-8px; }
+.three-dot::after{ top:8px; }
+.three-dot:hover{opacity:.6;}
 
 /* SIDE MENU */
 .side-menu{
   position:fixed; top:0; right:0;
   width:230px; height:100vh;
   background:var(--panel);
-  padding:80px 24px;
+  padding:90px 24px;
   transform:translateX(100%);
-  transition:.3s;
+  transition:.3s ease;
   display:flex; flex-direction:column; gap:18px;
   border-left:1px solid var(--outline);
   z-index:1000;
 }
 .side-menu.show{ transform:translateX(0); }
+
+/* MENU LINKS */
 .side-menu a{
   font-size:17px;
   color:var(--ink);
   text-decoration:none;
   font-weight:600;
+  position:relative;
+  padding-bottom:3px;
 }
 
+/* Hover underline effect */
+.side-menu a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0%;
+  height:2px;
+  background:var(--accent);
+  transition:.25s ease;
+}
+.side-menu a:hover::after{
+  width:100%;
+}
+
+/* OVERLAY */
 .menu-overlay{
   position:fixed; inset:0;
   background:rgba(0,0,0,.4);
@@ -146,6 +181,7 @@ body{
   padding:0 18px;
   text-align:center;
 }
+
 .section-box h2{
   font-size:28px;
   display:inline-block;
@@ -173,18 +209,14 @@ body{
   font-size:17px;
 }
 
-/* THEME BUTTON */
-/* THEME SLIDER SWITCH */
+/* THEME SWITCH (SUN / MOON) */
 .theme-toggle{
   position:fixed;
-  right:20px;
-  bottom:20px;
+  right:20px; bottom:20px;
   z-index:2000;
 }
 
-.theme-toggle input{
-  display:none;
-}
+.theme-toggle input{ display:none; }
 
 .switch{
   width:60px;
@@ -192,33 +224,31 @@ body{
   background:var(--accent2);
   border-radius:30px;
   position:relative;
-  display:block;
   cursor:pointer;
   transition:.3s;
 }
 
 .switch::after{
-  content:"";
-  width:24px;
-  height:24px;
+  content:"🌙"; 
+  font-size:16px;
+  width:24px; height:24px;
+  display:flex; align-items:center; justify-content:center;
   background:white;
   border-radius:50%;
   position:absolute;
-  top:3px;
-  left:3px;
+  top:3px; left:3px;
   transition:.3s;
   box-shadow:0 2px 6px rgba(0,0,0,.2);
 }
 
-/* When Dark Mode is active */
 input:checked + .switch{
   background:var(--accent);
 }
 
 input:checked + .switch::after{
-  left:33px; /* Slides right */
+  content:"☀️";
+  left:33px;
 }
-
 
 /* FOOTER */
 footer{
@@ -229,12 +259,12 @@ footer{
   color:var(--accent2);
   border-top:1px solid var(--outline);
 }
-  </style>
+</style>
 </head>
 
 <body>
 
-<!-- Floating Letters -->
+<!-- FLOATING LETTERS -->
 <div class="floating-letters">
   <span>অক্ষর</span><span>পত্র</span><span>শব্দ</span>
   <span>কবিতা</span><span>সৃষ্টি</span><span>গল্প</span>
@@ -243,30 +273,29 @@ footer{
 <!-- NAV -->
 <div class="nav-container">
   <div class="logo-left">OKKHORPOTRYA</div>
-
-  <!-- FIXED HAMBURGER -->
-  <div id="hamburger" class="hamburger">
-    <span></span><span></span><span></span>
-  </div>
+  <div id="menuBtn" class="three-dot"></div>
+  
 </div>
+
 
 <!-- SIDE MENU -->
 <div id="sideMenu" class="side-menu">
   <a href="index.html">Home</a>
-  <a href="about.html">About Okkhorpotrya</a>
+  <a href="about.html">About</a>
   <a href="team.html">Team</a>
+  <a href="writers.html">Writers</a>
+  <a href="abedon.html">Writer Application</a>
   <a href="index.html#join">Join Us</a>
   <a href="index.html#donate">Donate</a>
 </div>
 
 <div id="menuOverlay" class="menu-overlay"></div>
 
-<!-- THEME BUTTON -->
+<!-- THEME SLIDER -->
 <div class="theme-toggle">
   <input type="checkbox" id="themeSwitch">
   <label for="themeSwitch" class="switch"></label>
 </div>
-
 
 <!-- PAGE HEADER -->
 <section class="page-header">
@@ -274,7 +303,7 @@ footer{
   <p>অক্ষরপত্রের মূলনীতি ও পথচলার অঙ্গীকার</p>
 </section>
 
-<!-- LOKKHO -->
+<!-- SECTIONS -->
 <div class="section-box">
   <h2>লক্ষ্য | LOKKHO</h2>
   <div class="text-block">
@@ -282,7 +311,6 @@ footer{
   </div>
 </div>
 
-<!-- UDDESSO -->
 <div class="section-box">
   <h2>উদ্দেশ্য | UDDESSO</h2>
   <div class="text-block">
@@ -290,7 +318,6 @@ footer{
   </div>
 </div>
 
-<!-- SONGKOLPO -->
 <div class="section-box">
   <h2>সংকল্প | SONGKOLPO</h2>
   <div class="text-block">
@@ -303,37 +330,33 @@ footer{
 </footer>
 
 <script>
-/* YEAR */
-document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
 
-/* FLOATING LETTERS RANDOM POSITION */
+/* Floating letters random positioning */
 document.querySelectorAll('.floating-letters span').forEach(s=>{
   s.style.left = Math.random()*100 + "vw";
   s.style.animationDelay = Math.random()*-25 + "s";
 });
 
-/* HAMBURGER MENU FIX */
-const hamburger = document.getElementById("hamburger");
-const sideMenu = document.getElementById("sideMenu");
-const overlay  = document.getElementById("menuOverlay");
+/* THREE DOT MENU */
+const btn = document.getElementById("menuBtn");
+const menu = document.getElementById("sideMenu");
+const overlay = document.getElementById("menuOverlay");
 
-hamburger.onclick = ()=>{
-  hamburger.classList.toggle("active");
-  sideMenu.classList.toggle("show");
+btn.onclick = ()=>{
+  menu.classList.toggle("show");
   overlay.classList.toggle("show");
 };
 
 overlay.onclick = ()=>{
-  hamburger.classList.remove("active");
-  sideMenu.classList.remove("show");
+  menu.classList.remove("show");
   overlay.classList.remove("show");
 };
 
-/* THEME */
+/* THEME SWITCH */
 const themeSwitch = document.getElementById("themeSwitch");
 
-// Load saved theme
-if(localStorage.getItem("theme") === "dark"){
+if(localStorage.getItem("theme")==="dark"){
   document.documentElement.classList.add("dark");
   themeSwitch.checked = true;
 }
@@ -347,7 +370,6 @@ themeSwitch.addEventListener("change", ()=>{
     localStorage.setItem("theme","light");
   }
 });
-
 </script>
 
 </body>
