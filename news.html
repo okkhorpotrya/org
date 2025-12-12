@@ -12,7 +12,7 @@
    GLOBAL THEME
 =========================== */
 :root {
-  --bg:#f8f5ec; 
+  --bg:#f8f5ec;
   --ink:#1c1c1c;
   --panel:rgba(255,255,255,.92);
   --accent:#a2352a;
@@ -20,111 +20,169 @@
   --outline:rgba(0,0,0,.08);
   --radius:14px;
 }
+
 :root.dark {
-  --bg:#1f1e1c; 
+  --bg:#1f1e1c;
   --ink:#f0eada;
   --panel:rgba(35,34,33,.94);
   --accent:#d6a18b;
   --accent2:#b7c7bd;
-  --outline:rgba(255,255,255,.08);
+  --outline:rgba(255,255,255,.1);
 }
 
-/* BODY */
-body {
+*{
   margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Hind Siliguri",sans-serif;
+}
+
+body{
   background:var(--bg);
   color:var(--ink);
-  font-family:"Hind Siliguri",sans-serif;
   transition:.4s;
 }
 
-/* NAVBAR */
+/* ===========================
+   NAVBAR
+=========================== */
 .nav-container{
-  position:fixed; top:0; left:0; width:100%;
-  padding:14px 22px;
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  padding:12px 20px;
   background:var(--panel);
   backdrop-filter:blur(12px);
-  display:flex; justify-content:space-between; align-items:center;
   border-bottom:1px solid var(--outline);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   z-index:1000;
 }
-.logo-left{font-size:20px;font-weight:700;}
 
-/* HOME BUTTON */
-.home-btn{
-  position:fixed; left:20px; top:90px;
-  padding:8px 16px;
-  background:var(--panel);
-  border:1px solid var(--outline);
-  border-radius:var(--radius);
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.nav-home{
   text-decoration:none;
-  color:var(--ink);
   font-weight:600;
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
-  z-index:2000;
+  color:var(--ink);
+  font-size:clamp(13px, 3vw, 15px);
+  position:relative;
+  padding-bottom:3px;
 }
 
-/* THEME BUTTON */
-.theme-btn{
-  position:fixed; right:20px; bottom:20px;
-  width:52px; height:52px; border:none;
-  border-radius:50%;
-  background:var(--panel);
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
-  color:var(--ink); font-size:26px;
-  cursor:pointer;
-  z-index:2000;
+.nav-home::after{
+  content:"";
+  position:absolute;
+  bottom:-3px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:var(--accent);
+  transition:.25s;
 }
 
-/* TOP CATEGORY NAV */
+.nav-home:hover{
+  color:var(--accent);
+}
+
+.nav-home:hover::after{
+  width:100%;
+}
+
+.logo-left{
+  font-size:clamp(14px, 4vw, 18px);
+  font-weight:700;
+}
+
+/* ===========================
+   CATEGORY NAV
+=========================== */
 .category-nav{
   margin-top:80px;
   position:sticky;
   top:60px;
   z-index:900;
   background:var(--panel);
-  padding:12px 5%;
+  padding:10px 4%;
   display:flex;
   justify-content:center;
-  gap:24px;
+  gap:20px;
   border-bottom:1px solid var(--outline);
   backdrop-filter:blur(10px);
 }
+
 .category-nav a{
   text-decoration:none;
   font-weight:600;
+  font-size:clamp(12px, 3vw, 15px);
   color:var(--ink);
-  padding-bottom:4px;
+  padding-bottom:3px;
   position:relative;
 }
-.category-nav a:hover{
-  color:var(--accent);
-}
+
 .category-nav a::after{
   content:"";
   position:absolute;
-  bottom:-4px; left:0;
-  width:0%; height:2px;
+  bottom:-3px;
+  left:0;
+  width:0%;
+  height:2px;
   background:var(--accent);
   transition:.25s;
 }
+
+.category-nav a:hover{
+  color:var(--accent);
+}
+
 .category-nav a:hover::after{
   width:100%;
 }
+/* Make HOME look equal to others */
+.category-nav .cat-home {
+  font-weight:700;
+  color:var(--ink);
+}
 
-/* HEADER */
+.category-nav .cat-home:hover {
+  color:var(--accent);
+}
+
+/* Keep same underline hover effect */
+.category-nav .cat-home::after {
+  content:"";
+  position:absolute;
+  bottom:-4px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:var(--accent);
+  transition:.25s;
+}
+.category-nav .cat-home:hover::after {
+  width:100%;
+}
+
+/* ===========================
+   PAGE HEADER
+=========================== */
 .page-header{
   padding-top:140px;
   text-align:center;
 }
 .page-header h1{
-  font-size:40px;
+  font-size:clamp(22px,5vw,36px);
   font-weight:700;
-  margin-bottom:6px;
 }
 .page-header p{
+  font-size:clamp(12px,3vw,16px);
   color:var(--accent2);
-  font-size:16px;
+  margin-top:6px;
 }
 
 /* SECTION TITLE */
@@ -132,11 +190,13 @@ body {
   max-width:1000px;
   margin:40px auto 12px;
   padding-left:10px;
-  font-size:22px;
+  font-size:clamp(16px, 4vw, 22px);
   font-weight:700;
 }
 
-/* GRID */
+/* ===========================
+   GRID
+=========================== */
 .card-grid{
   max-width:1000px;
   margin:auto;
@@ -146,13 +206,11 @@ body {
   gap:18px;
 }
 
-/* CARD */
 .card{
   background:var(--panel);
   border-radius:var(--radius);
   border:1px solid var(--outline);
   overflow:hidden;
-  box-shadow:0 6px 16px rgba(0,0,0,.06);
   display:flex;
   flex-direction:column;
   transition:.25s;
@@ -162,33 +220,30 @@ body {
   box-shadow:0 12px 26px rgba(0,0,0,.12);
 }
 
-/* THUMBNAIL */
 .card-thumb{
   width:100%;
   height:150px;
-  overflow:hidden;
 }
 .card-thumb img{
   width:100%; height:100%;
   object-fit:cover;
 }
 
-/* CONTENT */
 .card-content{
   padding:14px;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  flex-grow:1;
 }
 
 .card-title{
-  font-size:18px;
+  font-size:clamp(15px, 3.5vw, 18px);
   font-weight:700;
   margin-bottom:6px;
 }
+
 .card-excerpt{
-  font-size:14px;
+  font-size:clamp(12px,3vw,14px);
   color:var(--accent2);
   margin-bottom:10px;
 }
@@ -211,26 +266,29 @@ footer{
   text-align:center;
   border-top:1px solid var(--outline);
   color:var(--accent2);
+  font-size:clamp(12px,3vw,14px);
 }
 </style>
 </head>
 
 <body>
 
-<!-- HOME BUTTON -->
-<a href="index.html" class="home-btn">← হোম</a>
-
 <!-- NAV -->
 <div class="nav-container">
-  <div class="logo-left">OKKHORPOTRYA</div>
+  <div class="nav-left">
+
+    <div class="logo-left">OKKHORPOTRYA</div>
+  </div>
 </div>
 
 <!-- CATEGORY NAV -->
+<!-- CATEGORY NAV -->
 <div class="category-nav">
-  <a href="#national">জাতীয় সংবাদ</a>
-  <a href="#literature">সাহিত্য সংবাদ</a>
-  <a href="#events">ইভেন্ট ও অনুষ্ঠান</a>
-  <a href="#review">রিভিউ নিউজ</a>
+  <a href="index.html" class="cat-home">হোম</a>
+  <a href="#national">জাতীয়</a>
+  <a href="#literature">সাহিত্য</a>
+  <a href="#events">ইভেন্ট</a>
+  <a href="#review">রিভিউ</a>
   <a href="#editorial">সম্পাদকীয়</a>
 </div>
 
@@ -240,12 +298,9 @@ footer{
   <p>সাহিত্য, সমাজ, সংস্কৃতি—সব খবর এক জায়গায়</p>
 </section>
 
-<!-- ===========================
-     NATIONAL NEWS
-=========================== -->
+<!-- NATIONAL -->
 <h2 id="national" class="section-title">জাতীয় সংবাদ</h2>
 <div class="card-grid">
-
   <div class="card">
     <div class="card-thumb"><img src="assets/news1.jpg"></div>
     <div class="card-content">
@@ -253,37 +308,29 @@ footer{
         <div class="card-title">বাংলা সাহিত্য সম্মেলন ২০২৫</div>
         <div class="card-excerpt">ঢাকায় অনুষ্ঠিত বার্ষিক সাহিত্য উৎসব…</div>
       </div>
-      <a href="writings/news01.html" class="read-btn">পড়ুন</a>
+      <a href="#" class="read-btn">পড়ুন</a>
     </div>
   </div>
-
 </div>
 
-<!-- ===========================
-     LITERATURE NEWS
-=========================== -->
+<!-- LITERATURE -->
 <h2 id="literature" class="section-title">সাহিত্য সংবাদ</h2>
 <div class="card-grid">
-
   <div class="card">
     <div class="card-thumb"><img src="assets/news2.jpg"></div>
     <div class="card-content">
       <div>
         <div class="card-title">নতুন কবিতা সংকলন প্রকাশ</div>
-        <div class="card-excerpt">প্রতিশ্রুতিশীল ১২ তরুণ কবির কবিতা…</div>
+        <div class="card-excerpt">বারো তরুণ কবির সেরা কবিতা…</div>
       </div>
       <a href="#" class="read-btn">পড়ুন</a>
     </div>
   </div>
-
 </div>
 
-<!-- ===========================
-     EVENTS & PROGRAMS
-=========================== -->
+<!-- EVENTS -->
 <h2 id="events" class="section-title">ইভেন্ট ও অনুষ্ঠান</h2>
 <div class="card-grid">
-
   <div class="card">
     <div class="card-thumb"><img src="assets/news3.jpg"></div>
     <div class="card-content">
@@ -294,45 +341,36 @@ footer{
       <a href="#" class="read-btn">পড়ুন</a>
     </div>
   </div>
-
 </div>
 
-<!-- ===========================
-     REVIEW NEWS
-=========================== -->
+<!-- REVIEW -->
 <h2 id="review" class="section-title">রিভিউ নিউজ</h2>
 <div class="card-grid">
-
   <div class="card">
     <div class="card-thumb"><img src="assets/news4.jpg"></div>
     <div class="card-content">
       <div>
         <div class="card-title">‘নীরবতার ঘূর্ণি’ বই রিভিউ</div>
-        <div class="card-excerpt">নতুন উপন্যাসের সমালোচনামূলক বিশ্লেষণ…</div>
+        <div class="card-excerpt">সাহিত্যিক বিশ্লেষণ…</div>
       </div>
       <a href="#" class="read-btn">পড়ুন</a>
     </div>
   </div>
-
 </div>
 
-<!-- ===========================
-     EDITORIAL
-=========================== -->
+<!-- EDITORIAL -->
 <h2 id="editorial" class="section-title">সম্পাদকীয়</h2>
 <div class="card-grid">
-
   <div class="card">
     <div class="card-thumb"><img src="assets/news5.jpg"></div>
     <div class="card-content">
       <div>
         <div class="card-title">মানুষকে মানুষ বলা হয় কেন?</div>
-        <div class="card-excerpt">মূল্যবোধ, সমাজ ও দায়িত্বশীলতার আলোচনা…</div>
+        <div class="card-excerpt">সমাজ, মূল্যবোধ ও বিবেক…</div>
       </div>
       <a href="#" class="read-btn">পড়ুন</a>
     </div>
   </div>
-
 </div>
 
 <footer>
@@ -340,22 +378,7 @@ footer{
 </footer>
 
 <script>
-/* YEAR */
 document.getElementById("year").textContent=new Date().getFullYear();
-
-/* DARK MODE */
-const themeBtn=document.getElementById("themeBtn");
-
-if(localStorage.getItem("theme")==="dark"){
-  document.documentElement.classList.add("dark");
-  themeBtn.textContent="🌞";
-}
-
-themeBtn.onclick=()=>{
-  const dark=document.documentElement.classList.toggle("dark");
-  themeBtn.textContent = dark ? "🌞" : "🌙";
-  localStorage.setItem("theme", dark ? "dark" : "light");
-};
 </script>
 
 </body>
