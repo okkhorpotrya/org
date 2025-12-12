@@ -8,9 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ===========================
-   GLOBAL THEME
-=========================== */
+/* GLOBAL THEME */
 :root {
   --bg:#f8f5ec; 
   --ink:#1c1c1c;
@@ -20,7 +18,6 @@
   --outline:rgba(0,0,0,.08);
   --radius:14px;
 }
-
 :root.dark {
   --bg:#1f1e1c; 
   --ink:#f0eada;
@@ -30,7 +27,6 @@
   --outline:rgba(255,255,255,.08);
 }
 
-/* BODY */
 body {
   margin:0;
   background:var(--bg);
@@ -54,12 +50,13 @@ body {
 /* HOME BUTTON */
 .home-btn{
   position:fixed; left:20px; top:90px;
-  width:46px; height:46px; border-radius:50%;
+  padding:8px 16px;
   background:var(--panel);
   border:1px solid var(--outline);
-  color:var(--accent); font-size:22px;
-  display:flex; align-items:center; justify-content:center;
-  text-decoration:none; font-weight:700;
+  border-radius:var(--radius);
+  color:var(--ink);
+  text-decoration:none;
+  font-weight:600;
   box-shadow:0 6px 18px rgba(0,0,0,.25);
   z-index:2000;
 }
@@ -67,8 +64,8 @@ body {
 /* THEME BUTTON */
 .theme-btn{
   position:fixed; right:20px; bottom:20px;
-  width:52px; height:52px; border:none;
-  border-radius:50%;
+  width:52px; height:52px;
+  border:none; border-radius:50%;
   background:var(--panel);
   color:var(--ink);
   font-size:26px;
@@ -107,98 +104,60 @@ body {
   background:var(--panel);
   border-radius:var(--radius);
   border:1px solid var(--outline);
+  overflow:hidden;
   box-shadow:0 6px 16px rgba(0,0,0,.06);
-  overflow:hidden;
   transition:.25s;
-  display:flex;
-  flex-direction:column;
+  display:flex;flex-direction:column;
 }
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 26px rgba(0,0,0,.12);
-}
+.card:hover{ transform:translateY(-4px); }
 
-/* FIXED THUMB (16:9) */
+/* THUMB */
 .card-thumb{
-  width:100%;
-  height:150px;
-  background:#ddd;
-  overflow:hidden;
+  width:100%; height:150px; overflow:hidden;
 }
 .card-thumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
+  width:100%; height:100%; object-fit:cover;
 }
 
 .card-content{
-  padding:14px;
-  flex-grow:1;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  padding:14px; display:flex; flex-direction:column; justify-content:space-between;
 }
-
-.card-title{
-  font-size:18px;
-  font-weight:700;
-  margin-bottom:6px;
-}
-.card-excerpt{
-  font-size:14px;
-  color:var(--accent2);
-  margin-bottom:10px;
-}
+.card-title{ font-size:18px;font-weight:700;margin-bottom:6px; }
+.card-excerpt{ font-size:14px;color:var(--accent2);margin-bottom:10px; }
 
 .read-btn{
-  background:var(--accent);
-  color:white;
-  padding:8px 12px;
-  font-size:13px;
-  border-radius:var(--radius);
-  text-decoration:none;
-  font-weight:600;
-  width:fit-content;
+  background:var(--accent);color:white;
+  padding:8px 12px;border-radius:var(--radius);
+  font-size:13px;text-decoration:none;font-weight:600;width:fit-content;
 }
 
 /* FOOTER */
 footer{
-  margin-top:40px;
-  padding:20px;
-  text-align:center;
-  border-top:1px solid var(--outline);
-  color:var(--accent2);
+  margin-top:40px;padding:20px;text-align:center;
+  border-top:1px solid var(--outline);color:var(--accent2);
 }
 </style>
 </head>
 
 <body>
 
-<!-- HOME BUTTON -->
-<a href="index.html" class="home-btn">🏠</a>
+<a href="index.html" class="home-btn">← হোম</a>
 
-<!-- NAV -->
 <div class="nav-container">
   <div class="logo-left">OKKHORPOTRYA</div>
 </div>
 
-<!-- THEME BUTTON -->
-<button id="themeBtn" class="theme-btn">🌙</button>
 
-<!-- HEADER -->
+
 <section class="page-header">
   <h1>কবিতা</h1>
   <p>অক্ষরপত্রের নির্বাচিত কবিতাসমূহ</p>
 </section>
 
-<!-- GRID -->
 <div class="card-grid">
 
   <div class="card">
-    <div class="card-thumb">
-      <img src="assets/poem1.jpg">
-    </div>
+    <div class="card-thumb"><img src="assets/poem1.jpg"></div>
     <div class="card-content">
       <div>
         <div class="card-title">রাত্রির গল্প</div>
@@ -209,9 +168,7 @@ footer{
   </div>
 
   <div class="card">
-    <div class="card-thumb">
-      <img src="assets/poem2.jpg">
-    </div>
+    <div class="card-thumb"><img src="assets/poem2.jpg"></div>
     <div class="card-content">
       <div>
         <div class="card-title">তুমি আমার শব্দ</div>
@@ -220,41 +177,17 @@ footer{
       <a href="writings/poem02.html" class="read-btn">পড়ুন</a>
     </div>
   </div>
-<div class="card">
-    <div class="card-thumb">
-      <img src="assets/poem1.jpg">
-    </div>
-    <div class="card-content">
-      <div>
-        <div class="card-title">মজিদ ডাকাত</div>
-        <div class="card-excerpt"> কিছু না, ভুল হছে...</div>
-      </div>
-      <a href="poem01.html" class="read-btn">পড়ুন</a>
-    </div>
 
 </div>
 
-<footer>
-  © <span id="year"></span> অক্ষরপত্র | OKKHORPOTRYA
-</footer>
+<footer>© <span id="year"></span> অক্ষরপত্র | OKKHORPOTRYA</footer>
 
 <script>
-/* YEAR */
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* THEME TOGGLE */
 const themeBtn=document.getElementById("themeBtn");
-
-if(localStorage.getItem("theme")==="dark"){
-  document.documentElement.classList.add("dark");
-  themeBtn.textContent="🌞";
-}
-
-themeBtn.onclick=()=>{
-  const dark=document.documentElement.classList.toggle("dark");
-  themeBtn.textContent = dark ? "🌞" : "🌙";
-  localStorage.setItem("theme", dark ? "dark" : "light");
-};
+if(localStorage.getItem("theme")==="dark"){document.documentElement.classList.add("dark");themeBtn.textContent="🌞";}
+themeBtn.onclick=()=>{const dark=document.documentElement.classList.toggle("dark");themeBtn.textContent=dark?"🌞":"🌙";localStorage.setItem("theme",dark?"dark":"light");};
 </script>
 
 </body>
