@@ -47,51 +47,13 @@ body{
    NAVBAR
 =========================== */
 .nav-container{
-  position:fixed;
-  top:0; left:0;
-  width:100%;
+  position:fixed; top:0; left:0; width:100%;
   padding:12px 20px;
   background:var(--panel);
   backdrop-filter:blur(12px);
   border-bottom:1px solid var(--outline);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display:flex; justify-content:space-between; align-items:center;
   z-index:1000;
-}
-
-.nav-left{
-  display:flex;
-  align-items:center;
-  gap:18px;
-}
-
-.nav-home{
-  text-decoration:none;
-  font-weight:600;
-  color:var(--ink);
-  font-size:clamp(13px, 3vw, 15px);
-  position:relative;
-  padding-bottom:3px;
-}
-
-.nav-home::after{
-  content:"";
-  position:absolute;
-  bottom:-3px;
-  left:0;
-  width:0%;
-  height:2px;
-  background:var(--accent);
-  transition:.25s;
-}
-
-.nav-home:hover{
-  color:var(--accent);
-}
-
-.nav-home:hover::after{
-  width:100%;
 }
 
 .logo-left{
@@ -125,51 +87,30 @@ body{
   position:relative;
 }
 
+.category-nav a:hover{
+  color:var(--accent);
+}
+
 .category-nav a::after{
   content:"";
   position:absolute;
-  bottom:-3px;
-  left:0;
-  width:0%;
-  height:2px;
+  bottom:-3px; left:0;
+  width:0%; height:2px;
   background:var(--accent);
   transition:.25s;
-}
-
-.category-nav a:hover{
-  color:var(--accent);
 }
 
 .category-nav a:hover::after{
   width:100%;
 }
-/* Make HOME look equal to others */
-.category-nav .cat-home {
+
+/* HOME LINK STYLE MATCHED */
+.cat-home{
   font-weight:700;
-  color:var(--ink);
-}
-
-.category-nav .cat-home:hover {
-  color:var(--accent);
-}
-
-/* Keep same underline hover effect */
-.category-nav .cat-home::after {
-  content:"";
-  position:absolute;
-  bottom:-4px;
-  left:0;
-  width:0%;
-  height:2px;
-  background:var(--accent);
-  transition:.25s;
-}
-.category-nav .cat-home:hover::after {
-  width:100%;
 }
 
 /* ===========================
-   PAGE HEADER
+   HEADER
 =========================== */
 .page-header{
   padding-top:140px;
@@ -185,7 +126,9 @@ body{
   margin-top:6px;
 }
 
-/* SECTION TITLE */
+/* ===========================
+   SECTION TITLE
+=========================== */
 .section-title{
   max-width:1000px;
   margin:40px auto 12px;
@@ -259,7 +202,9 @@ body{
   width:fit-content;
 }
 
-/* FOOTER */
+/* ===========================
+   FOOTER
+=========================== */
 footer{
   margin-top:40px;
   padding:20px;
@@ -275,13 +220,9 @@ footer{
 
 <!-- NAV -->
 <div class="nav-container">
-  <div class="nav-left">
-
-    <div class="logo-left">OKKHORPOTRYA</div>
-  </div>
+  <div class="logo-left">OKKHORPOTRYA</div>
 </div>
 
-<!-- CATEGORY NAV -->
 <!-- CATEGORY NAV -->
 <div class="category-nav">
   <a href="index.html" class="cat-home">হোম</a>
@@ -298,7 +239,7 @@ footer{
   <p>সাহিত্য, সমাজ, সংস্কৃতি—সব খবর এক জায়গায়</p>
 </section>
 
-<!-- NATIONAL -->
+<!-- CONTENT SECTIONS (unchanged except formatting) -->
 <h2 id="national" class="section-title">জাতীয় সংবাদ</h2>
 <div class="card-grid">
   <div class="card">
@@ -313,7 +254,6 @@ footer{
   </div>
 </div>
 
-<!-- LITERATURE -->
 <h2 id="literature" class="section-title">সাহিত্য সংবাদ</h2>
 <div class="card-grid">
   <div class="card">
@@ -328,7 +268,6 @@ footer{
   </div>
 </div>
 
-<!-- EVENTS -->
 <h2 id="events" class="section-title">ইভেন্ট ও অনুষ্ঠান</h2>
 <div class="card-grid">
   <div class="card">
@@ -343,7 +282,6 @@ footer{
   </div>
 </div>
 
-<!-- REVIEW -->
 <h2 id="review" class="section-title">রিভিউ নিউজ</h2>
 <div class="card-grid">
   <div class="card">
@@ -358,7 +296,6 @@ footer{
   </div>
 </div>
 
-<!-- EDITORIAL -->
 <h2 id="editorial" class="section-title">সম্পাদকীয়</h2>
 <div class="card-grid">
   <div class="card">
@@ -379,6 +316,11 @@ footer{
 
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
+
+/* 🔥 THE FIX: Sync theme with homepage */
+if (localStorage.getItem("theme") === "dark") {
+  document.documentElement.classList.add("dark");
+}
 </script>
 
 </body>
