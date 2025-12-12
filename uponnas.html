@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>উপন্যাস — অক্ষরপত্র</title>
+<title>উপন্যাস — অক্ষরপত্র | OKKHORPOTRYA</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -34,64 +34,48 @@ body{
   background:var(--bg);
   color:var(--ink);
   font-family:"Hind Siliguri",sans-serif;
-  transition:.4s;
+  transition:.3s;
 }
 
-/* NAV */
+/* ===========================
+   NAVBAR
+=========================== */
 .nav-container{
   position:fixed; top:0; left:0; width:100%;
-  padding:14px 22px;
+  padding:12px 20px;
   background:var(--panel);
   backdrop-filter:blur(12px);
-  display:flex; justify-content:space-between; align-items:center;
+  display:flex; justify-content:center; align-items:center;
   border-bottom:1px solid var(--outline);
   z-index:1000;
 }
-.logo-left{font-size:20px;font-weight:700;}
-
-/* HOME BUTTON */
-.home-btn{
-  position:fixed; left:20px; top:90px;
-  padding:8px 16px;
-  background:var(--panel);
-  border:1px solid var(--outline);
-  border-radius:var(--radius);
-  color:var(--ink);
-  text-decoration:none;
-  font-weight:600;
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
-  z-index:2000;
+.logo-left{
+  font-size:clamp(14px,4vw,18px);
+  font-weight:700;
 }
 
-/* THEME BUTTON */
-.theme-btn{
-  position:fixed; right:20px; bottom:20px;
-  width:52px; height:52px;
-  border:none; border-radius:50%;
-  background:var(--panel);
-  font-size:26px;
-  cursor:pointer;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
-  z-index:2000;
-}
-
-/* CATEGORY NAV */
+/* ===========================
+   CATEGORY NAV
+=========================== */
 .category-nav{
   margin-top:80px;
   position:sticky;
   top:60px;
   z-index:900;
   background:var(--panel);
-  padding:12px 5%;
-  display:flex; justify-content:center; gap:28px;
+  padding:10px 4%;
+  display:flex;
+  justify-content:center;
+  gap:18px;
   border-bottom:1px solid var(--outline);
   backdrop-filter:blur(10px);
 }
 .category-nav a{
   text-decoration:none;
   font-weight:600;
+  font-size:clamp(12px,3vw,15px);
   color:var(--ink);
-  padding-bottom:4px;
+  padding-bottom:3px;
   position:relative;
 }
 .category-nav a:hover{
@@ -100,8 +84,8 @@ body{
 .category-nav a::after{
   content:"";
   position:absolute;
-  bottom:-4px; left:0;
-  width:0%; height:2px;
+  bottom:-3px; left:0;
+  width:0; height:2px;
   background:var(--accent);
   transition:.25s;
 }
@@ -111,25 +95,34 @@ body{
 
 /* HEADER */
 .page-header{
-  padding-top:140px;
+  padding-top:130px;
   text-align:center;
 }
 .page-header h1{
-  font-size:40px;font-weight:700;margin-bottom:6px;
+  font-size:clamp(24px,5vw,36px);
+  font-weight:700;
 }
 .page-header p{
-  color:var(--accent2);font-size:16px;
+  font-size:clamp(12px,3vw,16px);
+  color:var(--accent2);
+  margin-top:6px;
 }
 
 /* SECTION TITLE */
 .section-title{
-  max-width:1000px;margin:40px auto 12px;
-  padding-left:10px;font-size:22px;font-weight:700;
+  max-width:1000px;
+  margin:40px auto 12px;
+  padding-left:10px;
+  font-size:clamp(16px,4vw,22px);
+  font-weight:700;
 }
 
-/* CARD GRID */
+/* ===========================
+   GRID
+=========================== */
 .card-grid{
-  max-width:1000px;margin:auto;
+  max-width:1000px;
+  margin:auto;
   padding:10px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -142,59 +135,80 @@ body{
   border-radius:var(--radius);
   border:1px solid var(--outline);
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
   box-shadow:0 6px 16px rgba(0,0,0,.06);
   transition:.25s;
-  display:flex;flex-direction:column;
 }
-.card:hover{ transform:translateY(-4px); }
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 26px rgba(0,0,0,.12);
+}
 
 /* THUMB */
-.card-thumb{ width:100%; height:150px; overflow:hidden; }
-.card-thumb img{ width:100%; height:100%; object-fit:cover; }
+.card-thumb{
+  width:100%;
+  height:150px;
+}
+.card-thumb img{
+  width:100%; height:100%;
+  object-fit:cover;
+}
 
 /* CONTENT */
 .card-content{
-  padding:14px;flex-grow:1;
-  display:flex;flex-direction:column;justify-content:space-between;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
-.card-title{font-size:18px;font-weight:700;margin-bottom:6px;}
-.card-excerpt{font-size:14px;color:var(--accent2);margin-bottom:10px;}
+.card-title{
+  font-size:clamp(15px,3.5vw,18px);
+  font-weight:700;
+  margin-bottom:6px;
+}
+.card-excerpt{
+  font-size:clamp(12px,3vw,14px);
+  color:var(--accent2);
+  margin-bottom:10px;
+}
 .read-btn{
-  background:var(--accent);color:white;
-  padding:8px 12px;border-radius:var(--radius);
-  text-decoration:none;font-weight:600;width:fit-content;
+  background:var(--accent);
+  color:white;
+  padding:8px 12px;
+  border-radius:var(--radius);
+  text-decoration:none;
+  font-weight:600;
+  width:fit-content;
 }
 
 /* FOOTER */
 footer{
-  margin-top:40px;padding:20px;
-  text-align:center;color:var(--accent2);
+  margin-top:40px;
+  padding:20px;
+  text-align:center;
   border-top:1px solid var(--outline);
+  color:var(--accent2);
 }
 </style>
 </head>
 
 <body>
 
-<!-- HOME -->
-<a href="index.html" class="home-btn">← হোম</a>
-
 <!-- NAV -->
 <div class="nav-container">
   <div class="logo-left">OKKHORPOTRYA</div>
 </div>
 
-<!-- THEME BUTTON -->
-
-
 <!-- CATEGORY NAV -->
 <div class="category-nav">
+  <a href="index.html">হোম</a>
   <a href="#mystery">রহস্য</a>
   <a href="#romantic">রোমান্টিক</a>
   <a href="#social">সামাজিক</a>
   <a href="#historical">ঐতিহাসিক</a>
-  <a href="#ongoing">চলমান ধারাবাহিক</a>
-  <a href="#completed">সমাপ্ত ধারাবাহিক</a>
+  <a href="#ongoing">চলমান</a>
+  <a href="#completed">সমাপ্ত</a>
 </div>
 
 <!-- HEADER -->
@@ -203,12 +217,10 @@ footer{
   <p>অক্ষরপত্রের নির্বাচিত দীর্ঘ গল্পসমূহ</p>
 </section>
 
-
 <!-- ===========================
-     রহস্য উপন্যাস
+     রহস্য
 =========================== -->
 <h2 id="mystery" class="section-title">রহস্য উপন্যাস</h2>
-
 <div class="card-grid">
 
   <div class="card">
@@ -216,7 +228,7 @@ footer{
     <div class="card-content">
       <div>
         <div class="card-title">অদৃশ্য ছায়া</div>
-        <div class="card-excerpt">রহস্যে মোড়া এক অচেনা রাত...</div>
+        <div class="card-excerpt">রহস্যে মোড়া এক অচেনা রাত…</div>
       </div>
       <a href="#" class="read-btn">পড়ুন</a>
     </div>
@@ -224,12 +236,10 @@ footer{
 
 </div>
 
-
 <!-- ===========================
-     রোমান্টিক উপন্যাস
+     রোমান্টিক
 =========================== -->
 <h2 id="romantic" class="section-title">রোমান্টিক উপন্যাস</h2>
-
 <div class="card-grid">
 
   <div class="card">
@@ -237,7 +247,7 @@ footer{
     <div class="card-content">
       <div>
         <div class="card-title">তোমার চোখে নীল আকাশ</div>
-        <div class="card-excerpt">ভালবাসার গল্পের নতুন অধ্যায়...</div>
+        <div class="card-excerpt">ভালবাসার গল্পের নতুন অধ্যায়…</div>
       </div>
       <a href="#" class="read-btn">পড়ুন</a>
     </div>
@@ -245,12 +255,10 @@ footer{
 
 </div>
 
-
 <!-- ===========================
-     সামাজিক উপন্যাস
+     সামাজিক
 =========================== -->
 <h2 id="social" class="section-title">সামাজিক উপন্যাস</h2>
-
 <div class="card-grid">
 
   <div class="card">
@@ -258,7 +266,7 @@ footer{
     <div class="card-content">
       <div>
         <div class="card-title">মানুষের গল্প</div>
-        <div class="card-excerpt">সমাজ, সম্পর্ক ও জীবনের লড়াই...</div>
+        <div class="card-excerpt">সমাজ ও সম্পর্কের নতুন দৃষ্টিকোণ…</div>
       </div>
       <a href="#" class="read-btn">পড়ুন</a>
     </div>
@@ -266,12 +274,10 @@ footer{
 
 </div>
 
-
 <!-- ===========================
-     ঐতিহাসিক উপন্যাস
+     ঐতিহাসিক
 =========================== -->
 <h2 id="historical" class="section-title">ঐতিহাসিক উপন্যাস</h2>
-
 <div class="card-grid">
 
   <div class="card">
@@ -279,7 +285,7 @@ footer{
     <div class="card-content">
       <div>
         <div class="card-title">সময়ের স্রোত</div>
-        <div class="card-excerpt">ইতিহাসের রক্তাক্ত অধ্যায়ের পথে...</div>
+        <div class="card-excerpt">ইতিহাসের রক্তাক্ত অধ্যায়ের পথে…</div>
       </div>
       <a href="#" class="read-btn">পড়ুন</a>
     </div>
@@ -287,12 +293,10 @@ footer{
 
 </div>
 
-
 <!-- ===========================
-     চলমান ধারাবাহিক
+     চলমান
 =========================== -->
 <h2 id="ongoing" class="section-title">চলমান ধারাবাহিক</h2>
-
 <div class="card-grid">
 
   <div class="card">
@@ -300,7 +304,7 @@ footer{
     <div class="card-content">
       <div>
         <div class="card-title">নীল জলের দেশে</div>
-        <div class="card-excerpt">পর্ব ১ — শুরু হচ্ছে নতুন যাত্রা...</div>
+        <div class="card-excerpt">পর্ব ১ — নতুন যাত্রা শুরু…</div>
       </div>
       <a href="#" class="read-btn">পড়ুন</a>
     </div>
@@ -308,12 +312,10 @@ footer{
 
 </div>
 
-
 <!-- ===========================
-     সমাপ্ত ধারাবাহিক
+     সমাপ্ত
 =========================== -->
 <h2 id="completed" class="section-title">সমাপ্ত ধারাবাহিক</h2>
-
 <div class="card-grid">
 
   <div class="card">
@@ -321,7 +323,7 @@ footer{
     <div class="card-content">
       <div>
         <div class="card-title">শেষ অধ্যায়</div>
-        <div class="card-excerpt">একটি গল্পের শেষ, আরেকটির শুরু...</div>
+        <div class="card-excerpt">একটি গল্পের শেষ, আরেকটির শুরু…</div>
       </div>
       <a href="#" class="read-btn">পড়ুন</a>
     </div>
@@ -329,26 +331,17 @@ footer{
 
 </div>
 
-
 <footer>
   © <span id="year"></span> অক্ষরপত্র | OKKHORPOTRYA
 </footer>
 
 <script>
-/* YEAR */
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* THEME */
-const themeBtn=document.getElementById("themeBtn");
+/* THEME SYNC */
 if(localStorage.getItem("theme")==="dark"){
   document.documentElement.classList.add("dark");
-  themeBtn.textContent="🌞";
 }
-themeBtn.onclick=()=>{
-  const dark=document.documentElement.classList.toggle("dark");
-  themeBtn.textContent = dark ? "🌞" : "🌙";
-  localStorage.setItem("theme", dark ? "dark" : "light");
-};
 </script>
 
 </body>
