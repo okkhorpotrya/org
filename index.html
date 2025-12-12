@@ -22,6 +22,7 @@
   --outline:rgba(0,0,0,.08);
   --radius:14px;
 }
+
 :root.dark {
   --bg:#1f1e1c;
   --ink:#f0eada;
@@ -39,7 +40,7 @@ body{
   overflow-x:hidden;
 }
 
-/* FLOATING LETTERS */
+/* Floating Letters */
 .floating-letters{
   position:fixed; inset:0; pointer-events:none; z-index:-1;
 }
@@ -65,69 +66,66 @@ body{
   display:flex;justify-content:space-between;align-items:center;
   z-index:999;
 }
-.logo-left{font-size:22px;font-weight:700;}
+.logo-left{
+  font-size:22px;font-weight:700;
+}
 
-.hamburger{
-  width:30px;height:23px;
-  display:flex;flex-direction:column;justify-content:space-between;
+/* THREE DOT MENU ICON */
+.menu-dots{
+  width:6px;
+  height:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
   cursor:pointer;
 }
-.hamburger span{
-  height:3px;width:100%;background:var(--accent2);
-  border-radius:4px;transition:.3s;
+.menu-dots span{
+  width:6px;
+  height:6px;
+  background:var(--accent2);
+  border-radius:50%;
+  transition:.3s;
 }
-.hamburger.active span:nth-child(1){transform:translateY(8px) rotate(45deg);}
-.hamburger.active span:nth-child(2){opacity:0;}
-.hamburger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
 
 .side-menu{
-  position:fixed;top:0;right:0;height:100vh;width:230px;
+  position:fixed;top:0;right:0;height:100vh;width:240px;
   background:var(--panel);padding:60px 24px;
-  display:flex;flex-direction:column;gap:18px;
-  transform:translateX(100%);transition:.3s;
+  display:flex;flex-direction:column;gap:20px;
+  transform:translateX(100%);
+  transition:.3s ease;
   border-left:1px solid var(--outline);
 }
 .side-menu.show{transform:translateX(0);}
-.side-menu a{font-size:17px;color:var(--ink);text-decoration:none;font-weight:600;}
+.side-menu a{
+  font-size:17px;color:var(--ink);
+  text-decoration:none;font-weight:600;
+}
 
 .menu-overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.4);
-  opacity:0;pointer-events:none;transition:.3s;z-index:900;
+  opacity:0;pointer-events:none;
+  transition:.3s;z-index:900;
 }
-.menu-overlay.show{opacity:1;pointer-events:auto;}
+.menu-overlay.show{
+  opacity:1;pointer-events:auto;
+}
 
-/* HERO – Compact version */
+/* HERO */
 .hero{
   height:55vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:0 6%;
-  margin-top:20px;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:0 6%;margin-top:20px;
 }
 
 .hero-title .bangla{
-  font-size:clamp(24px,5vw,55px);
+  font-size:clamp(22px,5vw,50px);
   font-weight:700;
-  margin-bottom:2px;
 }
-
-.hero-title .english{
-  font-size:clamp(12px,2vw,18px);
-  letter-spacing:2px;
-  font-weight:600;
-  color:var(--accent2);
-}
-
 
 .hero p{
-  margin-top:6px;
-  font-size:18px;
-  color:var(--accent);
+  margin-top:6px;font-size:17px;color:var(--accent);
 }
-
 
 /* SECTIONS */
 section{
@@ -135,171 +133,73 @@ section{
   max-width:950px;margin:auto;text-align:center;
 }
 h2{
-  font-size:30px;margin-bottom:12px;
+  font-size:28px;margin-bottom:12px;
   position:relative;display:inline-block;
 }
 h2::after{
   content:"";
-  position:absolute;
-  bottom:-6px;left:50%;
+  position:absolute;bottom:-6px;left:50%;
   transform:translateX(-50%);
-  width:60px;
-  height:3px;
-  background:var(--accent);
-  border-radius:3px;
-}
-.section-sub{margin-bottom:20px;font-size:15px;color:var(--accent2);}
-/* JOIN + DONATE SPACING FIX */
-#join, #donate {
-  margin-top: 40px;
+  width:60px;height:3px;
+  background:var(--accent);border-radius:3px;
 }
 
-/* JOIN spacing */
-.join-block {
-  margin-bottom: 22px;
-}
-
-.join-btn-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-/* DONATE spacing */
-.donate-block {
-  margin-bottom: 22px;
-}
-
-.donate-btn-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.donate-btn {
-  padding: 12px 26px;
-  font-size: 17px;
-  border-radius: 12px;
-}
-
-/* Donate number spacing */
-.donate-number {
-  display: none;
-  margin-top: 18px;
-  background: var(--panel);
-  padding: 12px 18px;
-  border-radius: var(--radius);
-  color: var(--accent);
-  width: fit-content;
-  margin-inline: auto;
-}
-
-.join-btn {
-  padding: 12px 26px;
-  font-size: 17px;
-  border-radius: 12px;
-}
-
-/* CATEGORY GRID (bigger boxes) */
+/* CATEGORY GRID */
 .category-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:22px;
-  margin-top:18px;
+  gap:22px;margin-top:18px;
 }
 .cat-box{
-  padding:28px 24px;
-  background:var(--panel);
+  padding:26px 20px;background:var(--panel);
   border-radius:var(--radius);
   border:1px solid var(--outline);
-  text-decoration:none;
-  color:var(--ink);
-  box-shadow:0 4px 12px rgba(0,0,0,.06);
+  text-decoration:none;color:var(--ink);
   transition:.25s;
 }
 .cat-box:hover{
-  transform:translateY(-5px);
+  transform:translateY(-4px);
   border-color:var(--accent);
-  box-shadow:0 12px 26px rgba(0,0,0,.15);
-}
-.cat-box h3{
-  font-size:22px;margin-bottom:6px;color:var(--accent);
-}
-.cat-box p{
-  font-size:15px;color:var(--accent2);line-height:1.6;
 }
 
-/* TEXT BLOCK */
+/* SMALLER TEXT BLOCK FOR MOBILE */
 .text-block{
   background:var(--panel);
-  padding:20px;border-radius:var(--radius);
+  padding:16px;
+  border-radius:var(--radius);
   border:1px solid var(--outline);
   border-left:4px solid var(--accent);
-  font-size:16px;color:var(--accent2);
-  line-height:1.6;
+  font-size:14.5px;
+  color:var(--accent2);
+  line-height:1.55;
 }
 
 /* JOIN + DONATE */
-#join,#donate{margin-top:35px;}
+.join-btn, .donate-btn{
+  padding:10px 20px;border-radius:12px;
+  font-size:16px;
+  text-decoration:none;
+  color:white;
+}
+.join-btn{background:var(--accent);}
+.donate-btn{background:var(--accent2);}
 
-.join-btn{
-  padding:10px 24px;border-radius:12px;background:var(--accent);
-  color:#fff;font-size:17px;text-decoration:none;
-}
-.donate-btn{
-  padding:10px 24px;border-radius:12px;background:var(--accent2);
-  color:#fff;font-size:17px;
-}
-.donate-number{
-  display:none;background:var(--panel);
-  padding:10px 18px;border-radius:var(--radius);
-  color:var(--accent);margin:14px auto 0;width:fit-content;
-}
-
-/* THEME BUTTON */
-/* THEME SLIDER SWITCH */
+/* Theme Switch */
 .theme-toggle{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  z-index:2000;
+  position:fixed;right:20px;bottom:20px;z-index:2000;
 }
 
-.theme-toggle input{
-  display:none;
-}
-
-.switch{
-  width:60px;
-  height:30px;
-  background:var(--accent2);
-  border-radius:30px;
-  position:relative;
-  display:block;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.switch::after{
-  content:"";
-  width:24px;
-  height:24px;
-  background:white;
+.theme-toggle button{
+  width:48px;
+  height:48px;
   border-radius:50%;
-  position:absolute;
-  top:3px;
-  left:3px;
+  border:none;
+  cursor:pointer;
+  background:var(--panel);
+  font-size:24px;
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
   transition:.3s;
-  box-shadow:0 2px 6px rgba(0,0,0,.2);
 }
-
-/* When Dark Mode is active */
-input:checked + .switch{
-  background:var(--accent);
-}
-
-input:checked + .switch::after{
-  left:33px; /* Slides right */
-}
-
 
 /* FOOTER */
 footer{
@@ -317,41 +217,45 @@ footer{
 <div class="floating-letters">
   <span>অ</span><span>ক</span><span>গ</span>
   <span>প্র</span><span>স্ব</span><span>প</span>
-    <span>অ</span><span>ক</span><span>গ</span>
+  <span>অ</span><span>ক</span><span>গ</span>
 </div>
 
 <!-- NAV -->
 <div class="nav-container">
   <div class="logo-left">OKKHORPOTRYA</div>
-  <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
+
+  <!-- THREE DOT MENU -->
+  <div id="menuDots" class="menu-dots">
+    <span></span><span></span><span></span>
+  </div>
 
   <div id="sideMenu" class="side-menu">
     <a href="index.html">Home</a>
     <a href="about.html">About Okkhorpotrya</a>
     <a href="team.html">Team</a>
-    <a href="#join">Join Us</a>
-    <a href="#donate">Donate</a>
-     <a href="writers.html">Writers Of Okkhorpotrya</a>
+    <a href="index.html#join">Join Us</a>
+    <a href="index.html#donate">Donate</a>
+    <a href="writers.html">Writers</a>
+    <a href="writers.html">Profile Application</a>
   </div>
 </div>
+
 <div id="menuOverlay" class="menu-overlay"></div>
 
+<!-- THEME TOGGLE -->
 <div class="theme-toggle">
-  <input type="checkbox" id="themeSwitch">
-  <label for="themeSwitch" class="switch"></label>
+  <button id="themeBtn">🌙</button>
 </div>
-
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-title">
-    <span class="bangla">অক্ষরপত্র | OKKHORPOTRYA </span>
-  
+    <span class="bangla">অক্ষরপত্র | OKKHORPOTRYA</span>
   </div>
   <p>সমাজ সংস্কারে সাহিত্যের অতন্দ্র প্রহরী</p>
 </section>
 
-<!-- CATEGORY -->
+<!-- CATEGORIES -->
 <section id="categories">
   <h2>লেখার বিভাগ</h2>
   <p class="section-sub">যা পড়তে ভালো লাগে বেছে নিন</p>
@@ -360,41 +264,34 @@ footer{
     <a href="poem.html" class="cat-box"><h3>কবিতা</h3><p>অনুভূতির নরম ঢেউ।</p></a>
     <a href="probondho.html" class="cat-box"><h3>প্রবন্ধ</h3><p>চিন্তা ও বিশ্লেষণ।</p></a>
     <a href="golpo.html" class="cat-box"><h3>গল্প</h3><p>জীবনের গল্পগুলো।</p></a>
-    <a href="uponnas.html" class="cat-box"><h3>ধারাবাহিক উপন্যাস</h3><p>অধ্যায়ে অধ্যায়ে রহস্য।</p></a>
-    <a href="news.html" class="cat-box"><h3>অক্ষরপত্র নিউজ</h3><p>সাহিত্য-সংস্কৃতির সংবাদ।</p></a>
-    <a href="bookreveiw.html" class="cat-box"><h3>বই রিভিউ</h3><p>বইয়ের বিশ্লেষণ।</p></a>
+    <a href="uponnas.html" class="cat-box"><h3>উপন্যাস</h3><p>অধ্যায়ে রহস্য।</p></a>
+    <a href="news.html" class="cat-box"><h3>নিউজ</h3><p>সাহিত্য সংবাদ।</p></a>
+    <a href="bookreveiw.html" class="cat-box"><h3>বই রিভিউ</h3><p>বিশ্লেষণ।</p></a>
   </div>
 </section>
-
-
 
 <!-- JOIN -->
 <section id="join">
   <h2>যুক্ত হোন</h2>
 
-  <div class="text-block join-block">
-    আপনি যদি শব্দের কারিগর হন — অক্ষরপত্র আপনাকে আহ্বান জানায়।
-  </div>
+  <div class="text-block">আপনি যদি শব্দের কারিগর হন — অক্ষরপত্র আপনাকে আহ্বান জানায়।</div>
 
-  <div class="join-btn-wrapper">
+  <div style="margin-top:18px;">
     <a href="https://www.facebook.com/okkhorpotrya" class="join-btn">JOIN NOW</a>
   </div>
 </section>
-
 
 <!-- DONATE -->
 <section id="donate">
   <h2>ডোনেট</h2>
 
-  <div class="text-block donate-block">
-    আপনার সামান্য সমর্থন অক্ষরপত্রকে আরও এগিয়ে নেয়।
-  </div>
+  <div class="text-block">আপনার সামান্য সমর্থন অক্ষরপত্রকে আরও এগিয়ে নেয়।</div>
 
-  <div class="donate-btn-wrapper">
+  <div style="margin-top:18px;">
     <button id="donateReveal" class="donate-btn">অনুদান করুন</button>
   </div>
 
-  <div id="donateNumber" class="donate-number">
+  <div id="donateNumber" class="donate-number" style="display:none;margin-top:14px;">
     📞 +880XXXXXXXXXX
   </div>
 </section>
@@ -413,12 +310,13 @@ document.querySelectorAll(".floating-letters span").forEach(s=>{
   s.style.animationDelay=Math.random()*-20+"s";
 });
 
-/* Menu */
-const h=document.getElementById("hamburger");
+/* MENU */
+const menuDots=document.getElementById("menuDots");
 const sm=document.getElementById("sideMenu");
 const ov=document.getElementById("menuOverlay");
-h.onclick=()=>{h.classList.toggle("active");sm.classList.toggle("show");ov.classList.toggle("show");};
-ov.onclick=()=>{h.classList.remove("active");sm.classList.remove("show");ov.classList.remove("show");};
+
+menuDots.onclick=()=>{sm.classList.toggle("show");ov.classList.toggle("show");};
+ov.onclick=()=>{sm.classList.remove("show");ov.classList.remove("show");};
 
 /* Donate */
 document.getElementById("donateReveal").onclick=()=>{
@@ -426,24 +324,17 @@ document.getElementById("donateReveal").onclick=()=>{
 };
 
 /* Theme */
-const themeSwitch = document.getElementById("themeSwitch");
-
-// Load saved theme
-if(localStorage.getItem("theme") === "dark"){
+const themeBtn=document.getElementById("themeBtn");
+if(localStorage.getItem("theme")==="dark"){
   document.documentElement.classList.add("dark");
-  themeSwitch.checked = true;
+  themeBtn.textContent="☀️";
 }
 
-themeSwitch.addEventListener("change", ()=>{
-  if(themeSwitch.checked){
-    document.documentElement.classList.add("dark");
-    localStorage.setItem("theme","dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-    localStorage.setItem("theme","light");
-  }
-});
-
+themeBtn.onclick=()=>{
+  const dark=document.documentElement.classList.toggle("dark");
+  themeBtn.textContent=dark?"☀️":"🌙";
+  localStorage.setItem("theme",dark?"dark":"light");
+};
 </script>
 
 </body>
