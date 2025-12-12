@@ -40,7 +40,9 @@ body{
   overflow-x:hidden;
 }
 
-/* Floating Letters */
+/* ===========================
+   FLOATING LETTERS
+=========================== */
 .floating-letters{
   position:fixed; inset:0; pointer-events:none; z-index:-1;
 }
@@ -52,11 +54,13 @@ body{
   animation:float 22s linear infinite;
 }
 @keyframes float{
-  0%{transform:translateY(100vh)}
-  100%{transform:translateY(-15vh)}
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-15vh);}
 }
 
-/* NAV */
+/* ===========================
+   NAVIGATION
+=========================== */
 .nav-container{
   position:fixed;top:0;left:0;width:100%;
   padding:10px 20px;
@@ -67,33 +71,32 @@ body{
   z-index:999;
 }
 .logo-left{
-  font-size:22px;font-weight:700;
+  font-size:20px;font-weight:700;
 }
 
-/* THREE DOT MENU ICON */
+/* THREE DOT MENU */
 .menu-dots{
-  width:6px;
-  height:20px;
-  display:flex;
-  flex-direction:column;
+  width:6px;height:20px;
+  display:flex;flex-direction:column;
   justify-content:space-between;
   cursor:pointer;
 }
 .menu-dots span{
-  width:6px;
-  height:6px;
+  width:6px;height:6px;
   background:var(--accent2);
   border-radius:50%;
   transition:.3s;
 }
 
 .side-menu{
-  position:fixed;top:0;right:0;height:100vh;width:240px;
-  background:var(--panel);padding:60px 24px;
+  position:fixed;top:0;right:0;
+  width:240px;height:100vh;
+  background:var(--panel);padding:70px 24px;
   display:flex;flex-direction:column;gap:20px;
   transform:translateX(100%);
-  transition:.3s ease;
+  transition:.3s;
   border-left:1px solid var(--outline);
+  z-index:1000;
 }
 .side-menu.show{transform:translateX(0);}
 .side-menu a{
@@ -101,57 +104,93 @@ body{
   text-decoration:none;font-weight:600;
 }
 
+/* Overlay */
 .menu-overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.4);
-  opacity:0;pointer-events:none;
-  transition:.3s;z-index:900;
+  opacity:0;pointer-events:none;transition:.3s;z-index:900;
 }
-.menu-overlay.show{
-  opacity:1;pointer-events:auto;
-}
+.menu-overlay.show{opacity:1;pointer-events:auto;}
 
-/* HERO */
+/* ===========================
+   HERO SECTION
+=========================== */
 .hero{
-  height:55vh;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;text-align:center;
-  padding:0 6%;margin-top:20px;
+  margin-top:110px;
+  text-align:center;
+  padding:0 6%;
 }
 
+/* Logo Box */
+.hero-logo-box{
+  width:130px;
+  height:130px;
+  margin:0 auto 18px auto;
+  background:var(--panel);
+  border:1px solid var(--outline);
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+.hero-logo-box::after{
+  content:"LOGO";
+  font-size:14px;
+  color:var(--accent2);
+  opacity:.6;
+}
+
+/* Title */
 .hero-title .bangla{
-  font-size:clamp(22px,5vw,50px);
+  font-size:clamp(18px,5vw,34px);
   font-weight:700;
+  margin-bottom:4px;
 }
-
 .hero p{
-  margin-top:6px;font-size:17px;color:var(--accent);
+  font-size:15px;
+  color:var(--accent);
 }
 
-/* SECTIONS */
+/* ===========================
+   SECTION TITLES
+=========================== */
 section{
-  padding:30px 6%;
-  max-width:950px;margin:auto;text-align:center;
+  padding:26px 6%;
+  max-width:950px;
+  margin:auto;
+  text-align:center;
 }
+
 h2{
-  font-size:28px;margin-bottom:12px;
-  position:relative;display:inline-block;
+  font-size:26px;
+  margin-bottom:10px;
+  position:relative;
+  display:inline-block;
 }
 h2::after{
-  content:"";
-  position:absolute;bottom:-6px;left:50%;
+  content:"";position:absolute;bottom:-6px;left:50%;
   transform:translateX(-50%);
-  width:60px;height:3px;
-  background:var(--accent);border-radius:3px;
+  width:60px;height:3px;background:var(--accent);
+  border-radius:3px;
 }
 
-/* CATEGORY GRID */
+.section-sub{
+  color:var(--accent2);
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+/* ===========================
+   CATEGORY GRID
+=========================== */
 .category-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:22px;margin-top:18px;
+  gap:22px;margin-top:14px;
 }
 .cat-box{
-  padding:26px 20px;background:var(--panel);
+  padding:24px;
+  background:var(--panel);
   border-radius:var(--radius);
   border:1px solid var(--outline);
   text-decoration:none;color:var(--ink);
@@ -162,51 +201,70 @@ h2::after{
   border-color:var(--accent);
 }
 
-/* SMALLER TEXT BLOCK FOR MOBILE */
+/* ===========================
+   TEXT BLOCK (JOIN / DONATE)
+=========================== */
 .text-block{
   background:var(--panel);
-  padding:16px;
+  padding:18px;
+  border-left:4px solid var(--accent);
   border-radius:var(--radius);
   border:1px solid var(--outline);
-  border-left:4px solid var(--accent);
   font-size:14.5px;
   color:var(--accent2);
-  line-height:1.55;
+  line-height:1.6;
 }
 
-/* JOIN + DONATE */
+/* Buttons */
 .join-btn, .donate-btn{
-  padding:10px 20px;border-radius:12px;
+  padding:10px 20px;
+  border-radius:12px;
   font-size:16px;
   text-decoration:none;
   color:white;
+  display:inline-block;
 }
 .join-btn{background:var(--accent);}
 .donate-btn{background:var(--accent2);}
 
-/* Theme Switch */
+/* Donate Number */
+.donate-number{
+  display:none;
+  background:var(--panel);
+  padding:12px 18px;
+  border-radius:var(--radius);
+  border:1px solid var(--outline);
+  margin-top:12px;
+  color:var(--accent);
+  width:fit-content;
+  margin-left:auto;margin-right:auto;
+}
+
+/* ===========================
+   THEME BUTTON
+=========================== */
 .theme-toggle{
   position:fixed;right:20px;bottom:20px;z-index:2000;
 }
-
 .theme-toggle button{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  border:none;
-  cursor:pointer;
+  width:48px;height:48px;
+  border-radius:50%;border:none;
   background:var(--panel);
   font-size:24px;
+  cursor:pointer;
   box-shadow:0 6px 16px rgba(0,0,0,.25);
-  transition:.3s;
 }
 
-/* FOOTER */
+/* ===========================
+   FOOTER
+=========================== */
 footer{
-  margin-top:30px;padding:20px;
-  text-align:center;color:var(--accent2);
-  border-top:1px solid var(--outline);
+  padding:20px;
+  text-align:center;
   font-size:14px;
+  color:var(--accent2);
+  border-top:1px solid var(--outline);
+  margin-top:30px;
 }
 </style>
 </head>
@@ -224,34 +282,39 @@ footer{
 <div class="nav-container">
   <div class="logo-left">OKKHORPOTRYA</div>
 
-  <!-- THREE DOT MENU -->
+  <!-- Three-dots menu -->
   <div id="menuDots" class="menu-dots">
     <span></span><span></span><span></span>
   </div>
 
+  <!-- Side Menu -->
   <div id="sideMenu" class="side-menu">
     <a href="index.html">Home</a>
     <a href="about.html">About Okkhorpotrya</a>
     <a href="team.html">Team</a>
-    <a href="index.html#join">Join Us</a>
-    <a href="index.html#donate">Donate</a>
     <a href="writers.html">Writers</a>
-    <a href="writers.html">Profile Application</a>
+    <a href="profileform.html">Profile Application</a>
+    <a href="#join">Join Us</a>
+    <a href="#donate">Donate</a>
   </div>
 </div>
 
 <div id="menuOverlay" class="menu-overlay"></div>
 
-<!-- THEME TOGGLE -->
+<!-- THEME BUTTON -->
 <div class="theme-toggle">
   <button id="themeBtn">🌙</button>
 </div>
 
 <!-- HERO -->
 <section class="hero">
+
+  <div class="hero-logo-box"></div>
+
   <div class="hero-title">
     <span class="bangla">অক্ষরপত্র | OKKHORPOTRYA</span>
   </div>
+
   <p>সমাজ সংস্কারে সাহিত্যের অতন্দ্র প্রহরী</p>
 </section>
 
@@ -265,37 +328,35 @@ footer{
     <a href="probondho.html" class="cat-box"><h3>প্রবন্ধ</h3><p>চিন্তা ও বিশ্লেষণ।</p></a>
     <a href="golpo.html" class="cat-box"><h3>গল্প</h3><p>জীবনের গল্পগুলো।</p></a>
     <a href="uponnas.html" class="cat-box"><h3>উপন্যাস</h3><p>অধ্যায়ে রহস্য।</p></a>
-    <a href="news.html" class="cat-box"><h3>নিউজ</h3><p>সাহিত্য সংবাদ।</p></a>
-    <a href="bookreveiw.html" class="cat-box"><h3>বই রিভিউ</h3><p>বিশ্লেষণ।</p></a>
+    <a href="news.html" class="cat-box"><h3>নিউজ</h3><p>নতুন সংবাদ।</p></a>
+    <a href="bookreveiw.html" class="cat-box"><h3>বই রিভিউ</h3><p>বই বিশ্লেষণ।</p></a>
   </div>
 </section>
 
 <!-- JOIN -->
 <section id="join">
   <h2>যুক্ত হোন</h2>
-
-  <div class="text-block">আপনি যদি শব্দের কারিগর হন — অক্ষরপত্র আপনাকে আহ্বান জানায়।</div>
-
-  <div style="margin-top:18px;">
-    <a href="https://www.facebook.com/okkhorpotrya" class="join-btn">JOIN NOW</a>
+  <div class="text-block">
+    আপনি যদি শব্দের কারিগর হন — অক্ষরপত্র আপনাকে আহ্বান জানায়।
+  </div>
+  <div style="margin-top:16px;">
+    <a href="https://facebook.com/okkhorpotrya" class="join-btn">JOIN NOW</a>
   </div>
 </section>
 
 <!-- DONATE -->
 <section id="donate">
   <h2>ডোনেট</h2>
-
-  <div class="text-block">আপনার সামান্য সমর্থন অক্ষরপত্রকে আরও এগিয়ে নেয়।</div>
-
-  <div style="margin-top:18px;">
+  <div class="text-block">
+    আপনার সামান্য সমর্থন অক্ষরপত্রকে আরও এগিয়ে নেয়।
+  </div>
+  <div style="margin-top:16px;">
     <button id="donateReveal" class="donate-btn">অনুদান করুন</button>
   </div>
-
-  <div id="donateNumber" class="donate-number" style="display:none;margin-top:14px;">
+  <div id="donateNumber" class="donate-number">
     📞 +880XXXXXXXXXX
   </div>
 </section>
-
 
 <footer>
   © <span id="year"></span> অক্ষরপত্র | OKKHORPOTRYA
@@ -310,26 +371,24 @@ document.querySelectorAll(".floating-letters span").forEach(s=>{
   s.style.animationDelay=Math.random()*-20+"s";
 });
 
-/* MENU */
+/* Menu */
 const menuDots=document.getElementById("menuDots");
 const sm=document.getElementById("sideMenu");
 const ov=document.getElementById("menuOverlay");
-
 menuDots.onclick=()=>{sm.classList.toggle("show");ov.classList.toggle("show");};
 ov.onclick=()=>{sm.classList.remove("show");ov.classList.remove("show");};
 
-/* Donate */
+/* Donate Reveal */
 document.getElementById("donateReveal").onclick=()=>{
   document.getElementById("donateNumber").style.display="block";
 };
 
-/* Theme */
+/* Theme toggle */
 const themeBtn=document.getElementById("themeBtn");
 if(localStorage.getItem("theme")==="dark"){
   document.documentElement.classList.add("dark");
   themeBtn.textContent="☀️";
 }
-
 themeBtn.onclick=()=>{
   const dark=document.documentElement.classList.toggle("dark");
   themeBtn.textContent=dark?"☀️":"🌙";
