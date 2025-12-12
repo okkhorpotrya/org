@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>লেখক তালিকা — অক্ষরপত্র | OKKHORPOTRYA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* GLOBAL THEME */
+:root {
+  --bg:#f8f5ec;
+  --ink:#1c1c1c;
+  --panel:rgba(255,255,255,.92);
+  --accent:#a2352a;
+  --accent2:#4e6e5d;
+  --outline:rgba(0,0,0,.08);
+  --radius:14px;
+}
+:root.dark {
+  --bg:#1f1e1c;
+  --ink:#f0eada;
+  --panel:rgba(35,34,33,.92);
+  --accent:#d6a18b;
+  --accent2:#a9c2b6;
+  --outline:rgba(255,255,255,.14);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Hind Siliguri",sans-serif;}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  transition:.35s;
+}
+
+/* NAV */
+.nav-container{
+  position:fixed; top:0; left:0; width:100%;
+  padding:14px 22px;
+  background:var(--panel);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--outline);
+  z-index:1000;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.logo-left{
+  font-size:20px; font-weight:700;
+}
+
+/* HOME BUTTON */
+.home-btn{
+  position:fixed; left:20px; top:90px;
+  padding:10px 20px;
+  border-radius:10px;
+  border:1px solid var(--outline);
+  text-decoration:none;
+  background:var(--panel);
+  color:var(--accent);
+  font-weight:700;
+  z-index:1000;
+}
+
+/* THEME SWITCH */
+.theme-toggle{
+  position:fixed; right:20px; bottom:20px;
+  z-index:1500;
+}
+.theme-toggle input{display:none;}
+.switch{
+  width:60px; height:30px;
+  background:var(--accent2);
+  border-radius:30px;
+  cursor:pointer;
+  position:relative;
+  transition:.3s;
+}
+.switch::after{
+  content:"";
+  width:24px; height:24px;
+  background:white;
+  border-radius:50%;
+  position:absolute;
+  top:3px; left:3px;
+  transition:.3s;
+}
+input:checked + .switch{
+  background:var(--accent);
+}
+input:checked + .switch::after{
+  left:33px;
+}
+
+/* HEADER */
+.page-header{
+  padding-top:130px;
+  padding-bottom:20px;
+  text-align:center;
+}
+.page-header h1{
+  font-size:34px; font-weight:700;
+}
+
+/* SEARCH BAR */
+.search-box{
+  max-width:850px;
+  margin:20px auto 0;
+  display:flex;
+  align-items:center;
+  background:var(--panel);
+  border:1px solid var(--outline);
+  border-radius:var(--radius);
+  padding:10px 15px;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+}
+.search-box input{
+  flex:1;
+  border:none;
+  outline:none;
+  background:none;
+  font-size:17px;
+  color:var(--ink);
+}
+.search-icon{
+  font-size:20px;
+  color:var(--accent2);
+  margin-right:8px;
+}
+
+/* WRITER GRID */
+.writer-grid{
+  max-width:1100px;
+  margin:30px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:24px;
+}
+
+.writer-card{
+  background:var(--panel);
+  border-radius:var(--radius);
+  border:1px solid var(--outline);
+  overflow:hidden;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+  transition:.25s;
+}
+.writer-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 26px rgba(0,0,0,.12);
+}
+
+.writer-photo{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.writer-content{
+  padding:16px 20px;
+}
+.writer-content h2{
+  font-size:22px;
+  font-weight:700;
+}
+.writer-content p{
+  font-size:15px;
+  color:var(--accent2);
+  margin:8px 0 12px;
+  line-height:1.6;
+}
+.view-btn{
+  padding:8px 18px;
+  background:var(--accent);
+  color:white;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:600;
+  border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+  margin-top:40px;
+  padding:20px;
+  text-align:center;
+  font-size:14px;
+  color:var(--accent2);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-container">
+  <div class="logo-left">OKKHORPOTRYA</div>
+</div>
+
+<a href="index.html" class="home-btn">Home</a>
+
+<!-- THEME SWITCH -->
+<div class="theme-toggle">
+  <input type="checkbox" id="themeSwitch">
+  <label for="themeSwitch" class="switch"></label>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <h1>লেখক তালিকা</h1>
+</section>
+
+<!-- SEARCH BAR -->
+<div class="search-box">
+  <span class="search-icon">🔍</span>
+  <input type="text" id="writerSearch" placeholder="লেখকের নাম বা কী-ওয়ার্ড লিখুন...">
+</div>
+
+<!-- WRITER GRID -->
+<div class="writer-grid" id="writerGrid">
+
+  <div class="writer-card" data-name="মাহমুদুল হাসান" data-bio="কবিতা গল্প প্রবন্ধ">
+    <img src="assets/writer1.jpg" class="writer-photo">
+    <div class="writer-content">
+      <h2>মুবশ্বিরুল ইসলাম</h2>
+      <p>কবিতা, গল্প ও প্রবন্ধে সমান দক্ষ। দারুণ ভাষাশৈলী।</p>
+      <a href="writer01.html" class="view-btn">প্রোফাইল দেখুন</a>
+    </div>
+  </div>
+
+  <div class="writer-card" data-name="রাহিমা সুলতানা" data-bio="সমসাময়িক গল্পকার বাস্তবতা লেখিকা">
+    <img src="assets/writer2.jpg" class="writer-photo">
+    <div class="writer-content">
+      <h2> ইবনু মাসউদ</h2>
+      <p>সমসাময়িক গল্পকার — জীবনের সূক্ষ্ম বাস্তবতা তাঁর গল্পে ধরা পড়ে।</p>
+      <a href="writer02.html" class="view-btn">প্রোফাইল দেখুন</a>
+    </div>
+  </div>
+
+  <div class="writer-card" data-name="আবীর আহমেদ" data-bio="প্রবন্ধ সমাজ ধর্ম লেখক">
+    <img src="assets/writer3.jpg" class="writer-photo">
+    <div class="writer-content">
+      <h2> আব্দুল মাজিদ</h2>
+      <p>তরুণ প্রবন্ধকার — সমাজ ও জ্ঞানচর্চা তাঁর মূল বিষয়।</p>
+      <a href="writer03.html" class="view-btn">প্রোফাইল দেখুন</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> অক্ষরপত্র | OKKHORPOTRYA
+</footer>
+
+<script>
+// YEAR
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// THEME SWITCH
+const themeSwitch = document.getElementById("themeSwitch");
+if(localStorage.getItem("theme")==="dark"){
+  document.documentElement.classList.add("dark");
+  themeSwitch.checked = true;
+}
+themeSwitch.addEventListener("change",()=>{
+  const dark = themeSwitch.checked;
+  document.documentElement.classList.toggle("dark", dark);
+  localStorage.setItem("theme", dark ? "dark" : "light");
+});
+
+// SEARCH FUNCTION
+const searchInput = document.getElementById("writerSearch");
+const writerCards = document.querySelectorAll(".writer-card");
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+
+  writerCards.forEach(card => {
+    const name = card.dataset.name.toLowerCase();
+    const bio  = card.dataset.bio.toLowerCase();
+
+    if(name.includes(query) || bio.includes(query)){
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});
+</script>
+
+</body>
+</html>
