@@ -174,16 +174,51 @@ body{
 }
 
 /* THEME BUTTON */
-.emoji-theme-btn{
-  position:fixed;right:20px;bottom:20px;
-  width:48px;height:48px;
-  background:var(--panel);
-  border:none;border-radius:50%;
-  font-size:22px;
-  cursor:pointer;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
+/* THEME SLIDER SWITCH */
+.theme-toggle{
+  position:fixed;
+  right:20px;
+  bottom:20px;
   z-index:2000;
 }
+
+.theme-toggle input{
+  display:none;
+}
+
+.switch{
+  width:60px;
+  height:30px;
+  background:var(--accent2);
+  border-radius:30px;
+  position:relative;
+  display:block;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.switch::after{
+  content:"";
+  width:24px;
+  height:24px;
+  background:white;
+  border-radius:50%;
+  position:absolute;
+  top:3px;
+  left:3px;
+  transition:.3s;
+  box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
+
+/* When Dark Mode is active */
+input:checked + .switch{
+  background:var(--accent);
+}
+
+input:checked + .switch::after{
+  left:33px; /* Slides right */
+}
+
 
 /* FOOTER */
 footer{
@@ -227,7 +262,11 @@ footer{
 <div id="menuOverlay" class="menu-overlay"></div>
 
 <!-- THEME BUTTON -->
-<button id="emojiThemeBtn" class="emoji-theme-btn">🌙</button>
+<div class="theme-toggle">
+  <input type="checkbox" id="themeSwitch">
+  <label for="themeSwitch" class="switch"></label>
+</div>
+
 
 <!-- PAGE HEADER -->
 <section class="page-header">
@@ -291,16 +330,24 @@ overlay.onclick = ()=>{
 };
 
 /* THEME */
-const themeBtn=document.getElementById("emojiThemeBtn");
-if(localStorage.getItem("theme")==="dark"){
+const themeSwitch = document.getElementById("themeSwitch");
+
+// Load saved theme
+if(localStorage.getItem("theme") === "dark"){
   document.documentElement.classList.add("dark");
-  themeBtn.textContent="🌞";
+  themeSwitch.checked = true;
 }
-themeBtn.onclick=()=>{
-  const dark=document.documentElement.classList.toggle("dark");
-  themeBtn.textContent=dark?"🌞":"🌙";
-  localStorage.setItem("theme", dark?"dark":"light");
-};
+
+themeSwitch.addEventListener("change", ()=>{
+  if(themeSwitch.checked){
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme","dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem("theme","light");
+  }
+});
+
 </script>
 
 </body>
