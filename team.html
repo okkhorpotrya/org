@@ -421,13 +421,6 @@ body{
 
 <script>
 
-const rawBio = card.dataset.bio.trim();
-
-const paragraphs = rawBio.split(/\n\s*\n/);
-
-modalBio.innerHTML = paragraphs
-  .map(p => `<p>${p.trim()}</p>`)
-  .join("");
 
 // DARK MODE
 
@@ -444,7 +437,13 @@ document.querySelectorAll(".team-card").forEach(card=>{
 
     document.getElementById("modalName").textContent = card.dataset.name;
     document.getElementById("modalRole").textContent = card.dataset.role;
-    document.getElementById("modalBio").textContent  = card.dataset.bio;
+    const bio = card.dataset.bio.trim();
+
+const paragraphs = bio.split(/\n\s*\n/);
+
+document.getElementById("modalBio").innerHTML =
+  paragraphs.map(p => `<p>${p.trim()}</p>`).join("");
+
     document.getElementById("modalPhoto").src       = card.dataset.img;
   });
 });
