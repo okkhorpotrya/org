@@ -421,6 +421,13 @@ body{
 
 <script>
 
+const rawBio = card.dataset.bio.trim();
+
+const paragraphs = rawBio.split(/\n\s*\n/);
+
+modalBio.innerHTML = paragraphs
+  .map(p => `<p>${p.trim()}</p>`)
+  .join("");
 
 // DARK MODE
 
